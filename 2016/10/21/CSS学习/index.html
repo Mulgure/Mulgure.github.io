@@ -31,7 +31,7 @@
   
     
   
-  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js" rel="stylesheet" type="text/css" />
 
 
 
@@ -62,46 +62,52 @@
 
 
 
-<meta name="description" content="on 2016.10.21
+<meta name="description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
+tags:on 2016.10.21
 某人blog中看到的
+css:
 p:first-letter {
-    color: red;
+        color: red;
 }
 p &amp;gt; span {
-    color: blue!important;
-}`
-`&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
+        color: blue!important;
+}
 
-结果“第”字是红色::first-letter伪元素其实是作为子元">
+html:
+&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS学习遇到的坑 (大坑慢慢填)">
+<meta property="og:title" content="Mulgure的小屋">
 <meta property="og:url" content="http://yoursite.com/2016/10/21/CSS学习/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="on 2016.10.21
+<meta property="og:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
+tags:on 2016.10.21
 某人blog中看到的
+css:
 p:first-letter {
-    color: red;
+        color: red;
 }
 p &amp;gt; span {
-    color: blue!important;
-}`
-`&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
+        color: blue!important;
+}
 
-结果“第”字是红色::first-letter伪元素其实是作为子元">
-<meta property="og:updated_time" content="2016-10-21T09:44:18.327Z">
+html:
+&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
+<meta property="og:updated_time" content="2016-11-11T06:04:59.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS学习遇到的坑 (大坑慢慢填)">
-<meta name="twitter:description" content="on 2016.10.21
+<meta name="twitter:title" content="Mulgure的小屋">
+<meta name="twitter:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
+tags:on 2016.10.21
 某人blog中看到的
+css:
 p:first-letter {
-    color: red;
+        color: red;
 }
 p &amp;gt; span {
-    color: blue!important;
-}`
-`&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
+        color: blue!important;
+}
 
-结果“第”字是红色::first-letter伪元素其实是作为子元">
+html:
+&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
 
 
 
@@ -125,7 +131,7 @@ p &amp;gt; span {
   <link rel="canonical" href="http://yoursite.com/2016/10/21/CSS学习/"/>
 
 
-  <title> CSS学习遇到的坑 (大坑慢慢填) | Mulgure的小屋 </title>
+  <title>  | Mulgure的小屋 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -231,7 +237,7 @@ p &amp;gt; span {
             
             
               
-                CSS学习遇到的坑 (大坑慢慢填)
+                
               
             
           </h1>
@@ -278,21 +284,34 @@ p &amp;gt; span {
       
 
       
-        <ol>
-<li></li>
-</ol>
-<p>on 2016.10.21</p>
+        <hr>
+<p>title: CSS学习遇到的坑 (大坑慢慢填)<br>date: 2016-10-21 17:42:45</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>on 2016.10.21</p>
 <p>某人blog中看到的</p>
-<pre><code>p:first-letter {
-    color: red;
+<pre><code>css:
+p:first-letter {
+        color: red;
 }
 p &gt; span {
-    color: blue!important;
-}`
-`&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
+        color: blue!important;
+}
+
+html:
+&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
 </code></pre><blockquote>
-<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看出是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
+<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
 </blockquote>
+<hr>
+<p>on 2016.11.11</p>
+<p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
+<pre><code>css:
+border: 10px solid hsla(0,0%,100%,.5);
+background: white; 
+background-clip: padding-box;      
+</code></pre><hr>
+<p>on 2016.11.11</p>
+<p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
+<p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
 
       
     </div>
@@ -351,7 +370,7 @@ p &gt; span {
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/10/21/CSS学习/"
-           data-title="CSS学习遇到的坑 (大坑慢慢填)" data-url="http://yoursite.com/2016/10/21/CSS学习/">
+           data-title="" data-url="http://yoursite.com/2016/10/21/CSS学习/">
       </div>
     
   </div>
@@ -396,7 +415,7 @@ p &gt; span {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -448,7 +467,7 @@ p &gt; span {
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
             
           </div>
         </section>
@@ -517,22 +536,22 @@ p &gt; span {
 
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//lib.baomitu.com/fastclick/1.0.6/fastclick.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script type="text/javascript" src="//lib.baomitu.com/velocity/1.2.3/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="//lib.baomitu.com/velocity/1.2.3/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   
