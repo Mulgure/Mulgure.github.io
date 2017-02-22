@@ -62,52 +62,16 @@
 
 
 
-<meta name="description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
+<meta name="description" content="addEventListener">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mulgure的小屋">
-<meta property="og:url" content="http://yoursite.com/2016/10/21/CSS学习/index.html">
+<meta property="og:title" content="addEventListener的useCapture">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/addEventListener的useCapture/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
-<meta property="og:updated_time" content="2016-11-11T06:04:59.149Z">
+<meta property="og:description" content="addEventListener">
+<meta property="og:updated_time" content="2016-12-06T13:57:00.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mulgure的小屋">
-<meta name="twitter:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
+<meta name="twitter:title" content="addEventListener的useCapture">
+<meta name="twitter:description" content="addEventListener">
 
 
 
@@ -128,10 +92,10 @@ html:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/21/CSS学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/addEventListener的useCapture/"/>
 
 
-  <title>  | Mulgure的小屋 </title>
+  <title> addEventListener的useCapture | Mulgure的小屋 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +201,7 @@ html:
             
             
               
-                
+                addEventListener的useCapture
               
             
           </h1>
@@ -249,8 +213,8 @@ html:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T17:42:45+08:00" content="2016-10-21">
-              2016-10-21
+            <time itemprop="dateCreated" datetime="2016-12-06T21:55:39+08:00" content="2016-12-06">
+              2016-12-06
             </time>
           </span>
 
@@ -260,8 +224,8 @@ html:
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/21/CSS学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/CSS学习/" itemprop="commentsCount"></span>
+                <a href="/2016/12/06/addEventListener的useCapture/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/addEventListener的useCapture/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,34 +248,7 @@ html:
       
 
       
-        <hr>
-<p>title: CSS学习遇到的坑 (大坑慢慢填)<br>date: 2016-10-21 17:42:45</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>on 2016.10.21</p>
-<p>某人blog中看到的</p>
-<pre><code>css:
-p:first-letter {
-        color: red;
-}
-p &gt; span {
-        color: blue!important;
-}
-
-html:
-&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
-</code></pre><blockquote>
-<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
-</blockquote>
-<hr>
-<p>on 2016.11.11</p>
-<p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
-<pre><code>css:
-border: 10px solid hsla(0,0%,100%,.5);
-background: white; 
-background-clip: padding-box;      
-</code></pre><hr>
-<p>on 2016.11.11</p>
-<p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
-<p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
+        <p>addEventListener</p>
 
       
     </div>
@@ -337,13 +274,13 @@ background-clip: padding-box;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/06/EventListener的useCapture/" rel="next" title="addEventListener的useCapture">
+                <i class="fa fa-chevron-left"></i> addEventListener的useCapture
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/21/JS学习/" rel="prev" title="JS学习遇到的坑 (大坑慢慢填)">
-                JS学习遇到的坑 (大坑慢慢填) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -369,8 +306,8 @@ background-clip: padding-box;
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/21/CSS学习/"
-           data-title="" data-url="http://yoursite.com/2016/10/21/CSS学习/">
+      <div class="ds-thread" data-thread-key="2016/12/06/addEventListener的useCapture/"
+           data-title="addEventListener的useCapture" data-url="http://yoursite.com/2016/12/06/addEventListener的useCapture/">
       </div>
     
   </div>
@@ -467,7 +404,7 @@ background-clip: padding-box;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

@@ -62,52 +62,12 @@
 
 
 
-<meta name="description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Mulgure的小屋">
-<meta property="og:url" content="http://yoursite.com/2016/10/21/CSS学习/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2016/12/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
-<meta property="og:updated_time" content="2016-11-11T06:04:59.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mulgure的小屋">
-<meta name="twitter:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
-
-html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
 
 
 
@@ -128,10 +88,10 @@ html:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/21/CSS学习/"/>
+  <link rel="canonical" href="http://yoursite.com/archives/2016/12/"/>
 
 
-  <title>  | Mulgure的小屋 </title>
+  <title> 归档 | Mulgure的小屋 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -152,7 +112,7 @@ html:
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -216,150 +176,103 @@ html:
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+      
+        
+      
+      嗯..! 目前共计 7 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T17:42:45+08:00" content="2016-10-21">
-              2016-10-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/21/CSS学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/CSS学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
-      
-        <hr>
-<p>title: CSS学习遇到的坑 (大坑慢慢填)<br>date: 2016-10-21 17:42:45</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>on 2016.10.21</p>
-<p>某人blog中看到的</p>
-<pre><code>css:
-p:first-letter {
-        color: red;
-}
-p &gt; span {
-        color: blue!important;
-}
-
-html:
-&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
-</code></pre><blockquote>
-<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
-</blockquote>
-<hr>
-<p>on 2016.11.11</p>
-<p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
-<pre><code>css:
-border: 10px solid hsla(0,0%,100%,.5);
-background: white; 
-background-clip: padding-box;      
-</code></pre><hr>
-<p>on 2016.11.11</p>
-<p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
-<p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
-
-      
-    </div>
-
-    <div>
       
         
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/21/JS学习/" rel="prev" title="JS学习遇到的坑 (大坑慢慢填)">
-                JS学习遇到的坑 (大坑慢慢填) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
         </div>
       
+      
 
       
-      
-    </footer>
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/12/06/addEventListener的useCapture/" itemprop="url">
+              
+                <span itemprop="name">addEventListener的useCapture</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-12-06T21:55:39+08:00"
+              content="2016-12-06" >
+          12-06
+        </time>
+      </div>
+
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
+    
+
       
-    </div>
-  </div>
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2016/12/06/EventListener的useCapture/" itemprop="url">
+              
+                <span itemprop="name">addEventListener的useCapture</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-12-06T21:55:39+08:00"
+              content="2016-12-06" >
+          12-06
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+  </section>
+
+  
+
 
 
           </div>
@@ -367,14 +280,6 @@ background-clip: padding-box;
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/10/21/CSS学习/"
-           data-title="" data-url="http://yoursite.com/2016/10/21/CSS学习/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -394,17 +299,8 @@ background-clip: padding-box;
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -460,17 +356,6 @@ background-clip: padding-box;
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -574,9 +459,11 @@ background-clip: padding-box;
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

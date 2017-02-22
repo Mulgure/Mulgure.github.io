@@ -62,52 +62,34 @@
 
 
 
-<meta name="description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
+<meta name="description" content="主角是
+element.addEventListener(event, function, useCapture)
+addEventListener有三个参数，前两个参数必填，也是我们熟知的 第三个参数useCapture知道的人就不是那么多了。这是选填参数，可选值为布尔值，指定事件是否在捕获或冒泡阶段执行，默认值为false。
+举个栗子简单明了 
 
 html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
+    &amp;lt;div clas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mulgure的小屋">
-<meta property="og:url" content="http://yoursite.com/2016/10/21/CSS学习/index.html">
+<meta property="og:title" content="addEventListener的useCapture">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/EventListener的useCapture/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
+<meta property="og:description" content="主角是
+element.addEventListener(event, function, useCapture)
+addEventListener有三个参数，前两个参数必填，也是我们熟知的 第三个参数useCapture知道的人就不是那么多了。这是选填参数，可选值为布尔值，指定事件是否在捕获或冒泡阶段执行，默认值为false。
+举个栗子简单明了 
 
 html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
-<meta property="og:updated_time" content="2016-11-11T06:04:59.149Z">
+    &amp;lt;div clas">
+<meta property="og:updated_time" content="2016-12-06T14:39:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mulgure的小屋">
-<meta name="twitter:description" content="title: CSS学习遇到的坑 (大坑慢慢填)date: 2016-10-21 17:42:45
-tags:on 2016.10.21
-某人blog中看到的
-css:
-p:first-letter {
-        color: red;
-}
-p &amp;gt; span {
-        color: blue!important;
-}
+<meta name="twitter:title" content="addEventListener的useCapture">
+<meta name="twitter:description" content="主角是
+element.addEventListener(event, function, useCapture)
+addEventListener有三个参数，前两个参数必填，也是我们熟知的 第三个参数useCapture知道的人就不是那么多了。这是选填参数，可选值为布尔值，指定事件是否在捕获或冒泡阶段执行，默认值为false。
+举个栗子简单明了 
 
 html:
-&amp;lt;p&amp;gt;&amp;lt;span&amp;gt;">
+    &amp;lt;div clas">
 
 
 
@@ -128,10 +110,10 @@ html:
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/21/CSS学习/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/EventListener的useCapture/"/>
 
 
-  <title>  | Mulgure的小屋 </title>
+  <title> addEventListener的useCapture | Mulgure的小屋 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +219,7 @@ html:
             
             
               
-                
+                addEventListener的useCapture
               
             
           </h1>
@@ -249,8 +231,8 @@ html:
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T17:42:45+08:00" content="2016-10-21">
-              2016-10-21
+            <time itemprop="dateCreated" datetime="2016-12-06T21:55:39+08:00" content="2016-12-06">
+              2016-12-06
             </time>
           </span>
 
@@ -260,8 +242,8 @@ html:
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/21/CSS学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/CSS学习/" itemprop="commentsCount"></span>
+                <a href="/2016/12/06/EventListener的useCapture/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/06/EventListener的useCapture/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,34 +266,79 @@ html:
       
 
       
-        <hr>
-<p>title: CSS学习遇到的坑 (大坑慢慢填)<br>date: 2016-10-21 17:42:45</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>on 2016.10.21</p>
-<p>某人blog中看到的</p>
-<pre><code>css:
-p:first-letter {
-        color: red;
-}
-p &gt; span {
-        color: blue!important;
-}
-
-html:
-&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
-</code></pre><blockquote>
-<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
+        <blockquote>
+<p>主角是</p>
+<p>element.addEventListener(event, function, useCapture)</p>
+<p>addEventListener有三个参数，前两个参数必填，也是我们熟知的 第三个参数useCapture知道的人就不是那么多了。这是选填参数，可选值为布尔值，指定事件是否在捕获或冒泡阶段执行，默认值为false。</p>
+<p>举个栗子简单明了 </p>
 </blockquote>
-<hr>
-<p>on 2016.11.11</p>
-<p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
+<pre><code>html:
+    &lt;div class=&quot;a&quot;&gt;
+        &lt;div class=&quot;b&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+css:
+    .a,.b{
+    width: 100px;
+    height: 100px;
+    background: red;
+    }
+
+js:
+    document.getElementsByClassName(&quot;a&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(1);},false);
+    document.getElementsByClassName(&quot;b&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(2);},false);
+</code></pre><blockquote>
+<p>然后点击 会先输出2，然后是1；</p>
+<p>如果js改成这样，事情就有点不同了</p>
+</blockquote>
+<pre><code>js:
+document.getElementsByClassName(&quot;a&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(1);},true);
+document.getElementsByClassName(&quot;b&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(2);},true);
+</code></pre><blockquote>
+<p>这次，是先输出1，然后2。</p>
+<p>个人理解 这里的true或者false可以理解为事件执行的优先级。在事件同时触发的情况下，优先执行参数为true的。其中：父元素为true&gt;子元素为true&gt;子元素为false&gt;父元素为false；</p>
+<p>另外，在子元素上进行的动作 会触发父元素的相关事件 这条跟元素在浏览器上的显示位置是否重叠无关</p>
+<p>稍稍修改上面的栗子，css加个绝对定位把div分开<br>    html:<br>        <div class="a"><br>            <div class="b"></div><br>        </div></p>
+</blockquote>
 <pre><code>css:
-border: 10px solid hsla(0,0%,100%,.5);
-background: white; 
-background-clip: padding-box;      
-</code></pre><hr>
-<p>on 2016.11.11</p>
-<p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
-<p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
+    .a{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: red;
+    }
+
+    .b{
+    position: absolute;
+    left: 200px;
+    width: 100px;
+    height: 100px;
+    background: blue;
+    }
+
+js:
+    document.getElementsByClassName(&quot;a&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(1);},false);
+    document.getElementsByClassName(&quot;b&quot;)[0].addEventListener(&apos;click&apos;, function(){alert(2);},false);
+</code></pre><blockquote>
+<p>点击之后，结果是一样的。先2后1。</p>
+<p>再搞点事情 把.a,.b变成兄弟元素，然后去掉.b的left: 200px,让ab叠一起;这时，是B在上A在下</p>
+</blockquote>
+<pre><code>html:
+    &lt;div class=&quot;a&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;b&quot;&gt;&lt;/div&gt;
+
+css:
+    .a,.b{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: red;
+    }
+</code></pre><blockquote>
+<p>点击，这时只输出2，没有1 换句话说点击不能穿透.b传到位置在底下的.a;</p>
+<p>如果用z-index让a在上面的话，点击就只输出1了 </p>
+<p>所以 事件触发跟元素在文档的位置有关(父元素子元素) 对于兄弟元素在浏览器位置的重叠，没有穿透性(不就是下面的被上面的盖住了么)</p>
+</blockquote>
 
       
     </div>
@@ -337,12 +364,16 @@ background-clip: padding-box;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/11/05/小flag/" rel="next" title="小flag">
+                <i class="fa fa-chevron-left"></i> 小flag
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/21/JS学习/" rel="prev" title="JS学习遇到的坑 (大坑慢慢填)">
-                JS学习遇到的坑 (大坑慢慢填) <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/06/addEventListener的useCapture/" rel="prev" title="addEventListener的useCapture">
+                addEventListener的useCapture <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -369,8 +400,8 @@ background-clip: padding-box;
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/21/CSS学习/"
-           data-title="" data-url="http://yoursite.com/2016/10/21/CSS学习/">
+      <div class="ds-thread" data-thread-key="2016/12/06/EventListener的useCapture/"
+           data-title="addEventListener的useCapture" data-url="http://yoursite.com/2016/12/06/EventListener的useCapture/">
       </div>
     
   </div>
@@ -467,7 +498,7 @@ background-clip: padding-box;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">1.</span> <span class="nav-text">tags:</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
