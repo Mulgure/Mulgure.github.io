@@ -46,7 +46,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="技术学习," />
 
 
 
@@ -64,41 +64,38 @@
 
 <meta name="description" content="下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用
 
-
-
+Jq的 
 很懒不想上图
 某日从网上搜出来的全选框代码（JQ）
 
 $(&amp;quot;.all&amp;quot;).click(function(){    
    if(this.checked){    
-        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;quot;">
+        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;qu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS学习遇到的坑 (大坑慢慢填)">
 <meta property="og:url" content="http://yoursite.com/2016/10/21/JS学习/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
 <meta property="og:description" content="下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用
 
-
-
+Jq的 
 很懒不想上图
 某日从网上搜出来的全选框代码（JQ）
 
 $(&amp;quot;.all&amp;quot;).click(function(){    
    if(this.checked){    
-        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;quot;">
-<meta property="og:updated_time" content="2017-02-20T12:01:42.249Z">
+        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;qu">
+<meta property="og:updated_time" content="2017-03-11T17:46:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS学习遇到的坑 (大坑慢慢填)">
 <meta name="twitter:description" content="下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用
 
-
-
+Jq的 
 很懒不想上图
 某日从网上搜出来的全选框代码（JQ）
 
 $(&amp;quot;.all&amp;quot;).click(function(){    
    if(this.checked){    
-        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;quot;">
+        $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;qu">
 
 
 
@@ -190,6 +187,14 @@ $(&amp;quot;.all&amp;quot;).click(function(){
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -277,9 +282,8 @@ $(&amp;quot;.all&amp;quot;).click(function(){
       
         <blockquote>
 <p>下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用</p>
-<ol>
-<li></li>
-</ol>
+</blockquote>
+<h2 id="Jq的"><a href="#Jq的" class="headerlink" title="Jq的 "></a>Jq的 </h2><blockquote>
 <p>很懒不想上图</p>
 <p>某日从网上搜出来的全选框代码（JQ）</p>
 </blockquote>
@@ -295,17 +299,14 @@ $(&amp;quot;.all&amp;quot;).click(function(){
 <p>这玩意第一次全选还好, 但是如果取消了勾选状态后再次全选会失效。</p>
 <p>所以去查了下，发现JQ 1.9有提到。</p>
 <p>当选择器是用来区分标签属性（attributes）和对象属性（properties）时，这种行为在向后兼容的命名方面会引起混乱。</p>
-<p>例如，一个复选框的布尔标签属性（attributes），如checked和disabled受到这种变化的影响。”input[checked]“的正确行为是选择有checked属性的复选框，不管是它的字符串值，还是它当前的状态。与此相反， “input:checked” 选择当前checked属性的布尔值（true或false）为true的复选框，例如当用户单击复选框时，会受到影响。1.9之前版本这些选择器有时不选择正确的节点。</p>
-<p>其中提到了一个1.6版本引入的prop()；语法差不多，区别如下</p>
-<p>1.添加属性名称该属性就会生效应该使用prop();<br>2.有true,false两个属性使用prop();</p>
-<h2 id="3-其他则使用attr"><a href="#3-其他则使用attr" class="headerlink" title="3.其他则使用attr();"></a>3.其他则使用attr();</h2><ol>
-<li><p>有关数的 </p>
-</li>
-</ol>
+<p>例如，一个复选框的布尔标签属性（attributes），如checked和disabled受到这种变化的影响。”input[checked]“的正确行为是选择有checked属性的复选框，不管是它的字符串值，还是它当前的状态。与此相反， “input:checked” 选择当前checked属性的布尔值（true或false）为true的复选框，例如当用户单击复选框时，会受到影响。1.9之前版本这些选择器有时不选择正确的节点。<br>其中提到了一个1.6版本引入的prop()；语法差不多，区别如下<br>添加属性名称该属性就会生效应该使用prop();<br>有true,false两个属性使用prop();<br>其他则使用attr();</p>
+</blockquote>
+<h2 id="有关数的"><a href="#有关数的" class="headerlink" title="有关数的 "></a>有关数的 </h2><blockquote>
 <p>浮点数的算术运算是个大坑 不要用这浮点数这玩意作判断条件、</p>
 <p>比如说0.1+0.2!=0.3而是0.30000000000000004(舍入误差) 而0.25+0.05就没有这种事情发生，是正常的</p>
-<h2 id="NaN-Not-a-Number-与任何值都不相等，包括其本身"><a href="#NaN-Not-a-Number-与任何值都不相等，包括其本身" class="headerlink" title="NaN(Not a Number) 与任何值都不相等，包括其本身"></a>NaN(Not a Number) 与任何值都不相等，包括其本身</h2><p>3.</p>
-<p>变量值的复制</p>
+<p>NaN(Not a Number) 与任何值都不相等，包括其本身</p>
+</blockquote>
+<h2 id="变量值的复制"><a href="#变量值的复制" class="headerlink" title="变量值的复制"></a>变量值的复制</h2><blockquote>
 <p>复制基本类型的值时，是按值传递</p>
 <p>负责引用类型的值时，是引用传递(指针)</p>
 <p>eg:</p>
@@ -322,9 +323,7 @@ $(&amp;quot;.all&amp;quot;).click(function(){
     var obj2 = obj1;
     obj1.name = &quot;myName2&quot;;
     console.log(obj2.name);  //myName2
-</code></pre><hr>
-<blockquote>
-<p>4.内容很散</p>
+</code></pre><h2 id="内容很散"><a href="#内容很散" class="headerlink" title="内容很散"></a>内容很散</h2><blockquote>
 <p>NaN==NaN //false;</p>
 <p>0==-0//true</p>
 <p>Symbol()==Symbol()//false<br>var a=”foo”;window.isNaN(a)  //true 算是JS的bug 所以 用ES6的Number.isNaN()来判断;</p>
@@ -358,7 +357,42 @@ console.log(Boolean(x&amp;&amp;y&amp;&amp;z));//true
 <p>parseInt(1/0,19);//18 原因：1/0转化为Infinity I值为18(A为10 然后就知道了吧) n无效 等同于parseInt(18,19)</p>
 <p>b=a-0会将a强制转化为数字 a*1或者a/1同理  b=a+””会将a强制转化为字符(串)</p>
 </blockquote>
+<h2 id="一个关于连等赋值的题"><a href="#一个关于连等赋值的题" class="headerlink" title="一个关于连等赋值的题 "></a>一个关于连等赋值的题 </h2><pre><code>var a = {n:1};
+a.x = a = {n:2};
+console.log(a.x);//undefined
+</code></pre><blockquote>
+<p>很是让人匪夷所思 这个涉及到赋值顺序和垃圾回收 有兴趣去搜索一下这个题目 算是抛砖引玉</p>
+</blockquote>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>JS大部分情况下 基于词法作用域<br>eg:</p>
+<pre><code>function foo(){
+    console.log(a);
+}
+function bar(){
+    var a=3;
+    foo();
+}
+var a=2;
+bar()   //2
+</code></pre><p>这一个例子就够了</p>
+<p>的隐式丢失</p>
+<blockquote>
+<p>this跟上面说的不同 基于动态作用域 不过总会有一些“bug” 其实也不算bug 隐式丢失算一个</p>
+</blockquote>
+<pre><code>function foo(){
+    console.log(this.a);
+}
 
+var obj={
+    a:2,
+    foo:foo
+};
+
+var bar=obj.foo;    //隐式绑定
+var a=&quot;global&quot;;
+
+obj.foo()   //2(严格模式是undefined)
+bar();  //&quot;global&quot;
+</code></pre>
       
     </div>
 
@@ -378,13 +412,19 @@ console.log(Boolean(x&amp;&amp;y&amp;&amp;z));//true
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/技术学习/" rel="tag">#技术学习</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/21/CSS学习/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/10/21/CSS学习/" rel="next" title="CSS学习">
+                <i class="fa fa-chevron-left"></i> CSS学习
               </a>
             
           </div>
@@ -473,6 +513,13 @@ console.log(Boolean(x&amp;&amp;y&amp;&amp;z));//true
           
 
           
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
 
         </nav>
 
@@ -517,7 +564,7 @@ console.log(Boolean(x&amp;&amp;y&amp;&amp;z));//true
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-其他则使用attr"><span class="nav-number">1.</span> <span class="nav-text">3.其他则使用attr();</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NaN-Not-a-Number-与任何值都不相等，包括其本身"><span class="nav-number">2.</span> <span class="nav-text">NaN(Not a Number) 与任何值都不相等，包括其本身</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jq的"><span class="nav-number">1.</span> <span class="nav-text">Jq的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关数的"><span class="nav-number">2.</span> <span class="nav-text">有关数的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量值的复制"><span class="nav-number">3.</span> <span class="nav-text">变量值的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容很散"><span class="nav-number">4.</span> <span class="nav-text">内容很散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个关于连等赋值的题"><span class="nav-number">5.</span> <span class="nav-text">一个关于连等赋值的题 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">6.</span> <span class="nav-text">词法作用域</span></a></li></ol></div>
             
           </div>
         </section>
