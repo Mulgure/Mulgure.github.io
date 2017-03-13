@@ -990,7 +990,6 @@ function bar(){
 var a=2;
 bar()   //2
 </code></pre><p>这一个例子就够了</p>
-<p>的隐式丢失</p>
 <blockquote>
 <p>this跟上面说的不同 基于动态作用域 不过总会有一些“bug” 其实也不算bug 隐式丢失算一个</p>
 </blockquote>
@@ -1008,6 +1007,11 @@ var a=&quot;global&quot;;
 
 obj.foo()   //2(严格模式是undefined)
 bar();  //&quot;global&quot;
+</code></pre><h2 id="typeof与instanceof"><a href="#typeof与instanceof" class="headerlink" title="typeof与instanceof"></a>typeof与instanceof</h2><p>typeof的返回值:number,boolean,string,object,undefined,symbol,function<br>instanceof只能用来判断对象和函数，不能用来判断字符串和数字等;<br>注意：</p>
+<pre><code>var b = &apos;123&apos;;
+var c = new String(&quot;123&quot;);
+alert(b instanceof String);  //false
+alert(c instanceof String);  //true
 </code></pre>
           
         
