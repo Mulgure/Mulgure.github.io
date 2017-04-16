@@ -62,25 +62,17 @@
 
 
 
-<meta name="description" content="前言不算一时兴起 只是单纯感受到自己的不足
-2017-04-02Two Sum
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-You may assume that each input would have exactly one">
+<meta name="description" content="前言不算一时兴起 只是单纯感受到自己的不足 2017-04-02Two Sum Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="每日一道算法题">
 <meta property="og:url" content="http://yoursite.com/2017/04/02/每日一道算法题/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="前言不算一时兴起 只是单纯感受到自己的不足
-2017-04-02Two Sum
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-You may assume that each input would have exactly one">
-<meta property="og:updated_time" content="2017-04-12T16:03:11.000Z">
+<meta property="og:description" content="前言不算一时兴起 只是单纯感受到自己的不足 2017-04-02Two Sum Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one">
+<meta property="og:updated_time" content="2017-04-16T06:25:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日一道算法题">
-<meta name="twitter:description" content="前言不算一时兴起 只是单纯感受到自己的不足
-2017-04-02Two Sum
-Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-You may assume that each input would have exactly one">
+<meta name="twitter:description" content="前言不算一时兴起 只是单纯感受到自己的不足 2017-04-02Two Sum Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one">
 
 
 
@@ -370,7 +362,7 @@ var findComplement = function(num) {
     if (num === 0) { return 1; }
     return num ^ (Math.pow(2, Math.floor(Math.log2(num))+1)-1);
 };
-</code></pre><h2 id="2017-04-04-1"><a href="#2017-04-04-1" class="headerlink" title="2017-04-04"></a>2017-04-04</h2><p><a href="https://leetcode.com/problems/fizz-buzz/#/description" target="_blank" rel="external">Fizz Buzz</a></p>
+</code></pre><h2 id="2017-04-05"><a href="#2017-04-05" class="headerlink" title="2017-04-05"></a>2017-04-05</h2><p><a href="https://leetcode.com/problems/fizz-buzz/#/description" target="_blank" rel="external">Fizz Buzz</a></p>
 <p>Write a program that outputs the string representation of numbers from 1 to n.</p>
 <p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
 <p>Example:</p>
@@ -408,7 +400,43 @@ Return:
     }
     return result;
 };
-</code></pre>
+</code></pre><h2 id="2017-04-06"><a href="#2017-04-06" class="headerlink" title="2017-04-06"></a>2017-04-06</h2><p><a href="https://leetcode.com/problems/reverse-string/#/description" target="_blank" rel="external">Reverse String</a></p>
+<p>Write a function that takes a string as input and returns the string reversed.</p>
+<p>Example:</p>
+<p>Given s = “hello”, return “olleh”.</p>
+<p>Subscribe to see which companies asked this question.</p>
+<p>My answer</p>
+<pre><code>var reverseString = function(s) {
+    return s.split(&apos;&apos;).reverse().join(&apos;&apos;);
+};
+</code></pre><h2 id="2017-04-07"><a href="#2017-04-07" class="headerlink" title="2017-04-07"></a>2017-04-07</h2><p><a href="https://leetcode.com/problems/next-greater-element-i/#/description" target="_blank" rel="external">Next Greater Element I</a></p>
+<p>You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1’s elements in the corresponding places of nums2.</p>
+<p>The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.</p>
+<p>Example 1:</p>
+<pre><code>Input: nums1 = [4,1,2], nums2 = [1,3,4,2].
+Output: [-1,3,-1]
+Explanation:
+    For number 4 in the first array, you cannot find the next greater number for it in the second array, so output -1.
+    For number 1 in the first array, the next greater number for it in the second array is 3.
+    For number 2 in the first array, there is no next greater number for it in the second array, so output -1.
+</code></pre><p>Others’:</p>
+<pre><code>var nextGreaterElement = function(findNums, nums) {
+    return findNums.map(n =&gt; {
+        let found = nums.indexOf(n);
+        while (nums[++found] &lt; n);
+        if (found &gt;= nums.length) found = -1;
+        else found = nums[found];      
+        return found;
+    });
+};
+</code></pre><p>有意思的是这一句</p>
+<pre><code>while (nums[++found] &lt; n);
+</code></pre><p>作用是跳到下一个有效索引 嗯 有意思 </p>
+<h2 id="2017-04-08"><a href="#2017-04-08" class="headerlink" title="2017-04-08"></a>2017-04-08</h2><p><a href="Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.">Sum of Two Integers</a></p>
+<p>Example:</p>
+<p>Given a = 1 and b = 2, return 3.</p>
+<p>others’:<br>    var getSum = function(a, b) {<br>                var carry=a&b;<br>                var result=a^b;<br>                while(carry!==0){<br>                        var arry_t=carry&lt;&lt;1;<br>                carry=carry_t&result;<br>                    result=result^carry_t;<br>                }<br>                return result;<br>    };</p>
+
       
     </div>
 
@@ -433,13 +461,13 @@ Return:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/18/我的围棋时光/" rel="next" title="我的围棋时光">
-                <i class="fa fa-chevron-left"></i> 我的围棋时光
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/18/我的围棋时光/" rel="prev" title="我的围棋时光">
+                我的围棋时光 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -570,7 +598,7 @@ Return:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-02"><span class="nav-number">2.</span> <span class="nav-text">2017-04-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-03"><span class="nav-number">3.</span> <span class="nav-text">2017-04-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-04"><span class="nav-number">4.</span> <span class="nav-text">2017-04-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-04-1"><span class="nav-number">5.</span> <span class="nav-text">2017-04-04</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-02"><span class="nav-number">2.</span> <span class="nav-text">2017-04-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-03"><span class="nav-number">3.</span> <span class="nav-text">2017-04-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-04"><span class="nav-number">4.</span> <span class="nav-text">2017-04-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-05"><span class="nav-number">5.</span> <span class="nav-text">2017-04-05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-06"><span class="nav-number">6.</span> <span class="nav-text">2017-04-06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-07"><span class="nav-number">7.</span> <span class="nav-text">2017-04-07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-08"><span class="nav-number">8.</span> <span class="nav-text">2017-04-08</span></a></li></ol></div>
             
           </div>
         </section>
