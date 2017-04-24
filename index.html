@@ -411,7 +411,210 @@ Return:
 <pre><code>var reverseString = function(s) {
     return s.split(&apos;&apos;).reverse().join(&apos;&apos;);
 };
-</code></pre>
+</code></pre><h2 id="2017-04-07"><a href="#2017-04-07" class="headerlink" title="2017-04-07"></a>2017-04-07</h2><p><a href="https://leetcode.com/problems/next-greater-element-i/#/description" target="_blank" rel="external">Next Greater Element I</a></p>
+<p>You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1’s elements in the corresponding places of nums2.</p>
+<p>The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.</p>
+<p>Example 1:</p>
+<pre><code>Input: nums1 = [4,1,2], nums2 = [1,3,4,2].
+Output: [-1,3,-1]
+Explanation:
+    For number 4 in the first array, you cannot find the next greater number for it in the second array, so output -1.
+    For number 1 in the first array, the next greater number for it in the second array is 3.
+    For number 2 in the first array, there is no next greater number for it in the second array, so output -1.
+</code></pre><p>Others’:</p>
+<pre><code>var nextGreaterElement = function(findNums, nums) {
+    return findNums.map(n =&gt; {
+        let found = nums.indexOf(n);
+        while (nums[++found] &lt; n);
+        if (found &gt;= nums.length) found = -1;
+        else found = nums[found];      
+        return found;
+    });
+};
+</code></pre><p>有意思的是这一句</p>
+<pre><code>while (nums[++found] &lt; n);
+</code></pre><p>作用是跳到下一个有效索引 嗯 有意思 </p>
+<h2 id="2017-04-08"><a href="#2017-04-08" class="headerlink" title="2017-04-08"></a>2017-04-08</h2><p><a href="Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.">Sum of Two Integers</a></p>
+<p>Example:</p>
+<p>Given a = 1 and b = 2, return 3.</p>
+<p>others’:<br>    var getSum = function(a, b) {<br>                var carry=a&b;<br>                var result=a^b;<br>                while(carry!==0){<br>                        var arry_t=carry&lt;&lt;1;<br>                carry=carry_t&result;<br>                    result=result^carry_t;<br>                }<br>                return result;<br>    };</p>
+<h2 id="2017-04-09"><a href="#2017-04-09" class="headerlink" title="2017-04-09"></a>2017-04-09</h2><p>先说下前言</p>
+<p>参加了好几场笔试 平台是赛码网 有些基本编译器环境不是很适应 比如</p>
+<pre><code>使用JavaScript语言请注意：作答时不要进行DOM相关操作，读取一行输入：read_line()，输出一行：print(something)；在使用read_line()函数时，请注意如果一行输入超过1024字符，需要多次调用read_line读取输入后自行拼接；在使用print函数输出时请注意，末尾自动带有换行符，无需自己添加。 
+</code></pre><p>输入都是一行一行的 读取也要这样</p>
+<p>当时比较纠结的就是这个read_line() 所以之后会以这个平台的题目为主 leetcode先放一放</p>
+<p>题目描述：<a href="http://exercise.acmcoder.com/online/online_judge_ques?ques_id=3817&amp;konwledgeId=41" target="_blank" rel="external">选举游戏</a></p>
+<pre><code>小东和其他小朋友正在玩一个关于选举的游戏。选举是通过投票的方式进行的，得票最多的人将获胜。
+
+小东是编号为1的候选者，此外还有其他的候选者参加选举。根据初步的调查情况，所有准备投票的小朋友都有一定的投票倾向性，小东如果要获得胜利，必须争取部分准备为其他候选人投票的小朋友。由于小东的资源较为有限，她希望用最小的代价赢得胜利，请你帮忙计算她最少需要争取的选票数。
+</code></pre><p>输入</p>
+<pre><code>输入有若干组，每组包含两行，第一行为一个正整数n（2&lt;=n&lt;=100），表示候选者的数量，第二行为每个候选人预期得到的选票数，以空格分开，每人的预期得票数在1到1000之间（包含1和1000）。
+
+经过小东的争取后，可能出现候选人得票数为0或超过1000的情况。
+</code></pre><p>输出</p>
+<pre><code>对每组测试数据，单独输出一行，内容为小东最少需要争取的选票数。
+</code></pre><p>样例输入</p>
+<pre><code>5
+
+5 1 11 2 8
+
+4
+
+1 8 8 8
+
+2
+
+7 6
+</code></pre><p>样例输出</p>
+<pre><code>4
+
+6
+
+0
+</code></pre><p>others’:</p>
+<pre><code>var n;
+while(n =  read_line()){      
+    var arr = read_line().split(&apos; &apos;);
+    fn1(n,arr);
+}
+function fn1(n,arr) {
+    var dong = arr[0];
+    var index = 0;
+    var i = 0;
+    while(n&gt;1){
+        arr.sort(compare);
+        index = arr.indexOf(dong);
+        if(n - index === 1){
+            break;    
+        }
+        dong++;
+        i++;
+        arr[index] = dong;
+        arr[n-1]--;
+    }
+    print(i);
+}
+function compare(a,b) {
+    return a-b;
+}
+</code></pre><p>其实我想了解的是这个read_line() 以及拿到数据后要怎么处理</p>
+<p>具体的算法 过两天再说吧</p>
+<p>（笔试 对自己的表现挺失望的 这么几场下来）</p>
+<h2 id="2017-04-10"><a href="#2017-04-10" class="headerlink" title="2017-04-10"></a>2017-04-10</h2><p>题目描述：<a href="http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1656&amp;konwledgeId=134" target="_blank" rel="external">翻转数组</a></p>
+<p>给定一个长度为n的整数数组a，元素均不相同，问数组是否存在这样一个片段，只将该片段翻转就可以使整个数组升序排列。其中数组片段[l,r]表示序列a[l], a[l+1], …, a[r]。原始数组为</p>
+<p>a[1], a[2], …, a[l-2], a[l-1], a[l], a[l+1], …, a[r-1], a[r], a[r+1], a[r+2], …, a[n-1], a[n]，</p>
+<p>将片段[l,r]反序后的数组是</p>
+<p>a[1], a[2], …, a[l-2], a[l-1], a[r], a[r-1], …, a[l+1], a[l], a[r+1], a[r+2], …, a[n-1], a[n]。</p>
+<p>输入</p>
+<p>第一行数据是一个整数：n (1≤n≤105)，表示数组长度。</p>
+<p>第二行数据是n个整数a[1], a[2], …, a[n] (1≤a[i]≤109)。</p>
+<p>myAnswer:</p>
+<pre><code>var length=read_line();
+var a=read_line().split(&apos; &apos;);
+var temp1=0;
+function sortNumber(a,b){
+    return a - b
+}
+var goalA=a.concat().sort(sortNumber)
+for(i=0;i&lt;a.length-3;i++){
+    if(a[i]&lt;a[i+1]&amp;&amp;a[i+1]&gt;a[i+2]){
+        var temp2=i+1;
+        temp1+=1;
+    }
+    if(a[i]&gt;a[i+1]&amp;&amp;a[i+1]&lt;a[i+2]){
+        var temp3=i+1;
+        temp1+=1;
+    }
+}
+if((temp1==2&amp;&amp;a[temp2]&lt;a[temp3+1]&amp;&amp;a[temp3]&gt;a[temp2-1])||(temp1==1&amp;&amp;a[temp3+1]&gt;a[0])||(temp1=0)){
+    print(&quot;yes&quot;);
+}
+else{
+    print(&quot;no&quot;);   
+}
+</code></pre><p>这个答案是有问题的 但是自己找不出问题在哪…如果dalao帮我解惑 那是最好的</p>
+<p>然后是别人的正确答案</p>
+<pre><code>function func(n, a){
+    var x = 0;
+    var y = 0; 
+    var b = [];
+    var c = [];
+    if(n == 1 || (n == 2 &amp;&amp; a[0] &gt; a[1])){
+        return &quot;yes&quot;;
+    }else{
+        for(var i = 0; i &lt; n-1; i++){
+            if(a[i] &gt; a[i+1] &amp;&amp; y == 0){
+                x++;
+                y = 1;
+                i==0 ? b.push(0) : b.push(a[i-1]);
+                b.push(a[i]);
+            }
+            else if(a[i] &lt; a[i+1] &amp;&amp; y == 1){
+                y = 0;
+                c.push(a[i]);
+                c.push(a[i+1]);
+            }
+        }
+
+        if((x == 1 &amp;&amp; b[0] &lt; c[0] &amp;&amp; b[1] &lt; c[1]) || x == 0){
+            return &quot;yes&quot;;
+        }else{
+            return &quot;no&quot;;
+        }
+    }
+}
+
+var nn, one;
+var aa = [];
+var line;
+while(line= read_line()){
+    line = line.split(&apos; &apos;);
+    if(line.length == 1){
+        nn = parseInt(line[0]);
+    }else{
+        aa = line;
+        for(one in aa){
+            aa[one] = parseInt(aa[one]);
+        }
+    }
+}
+
+print(func(nn, aa));
+</code></pre><h2 id="2017-04-10-1"><a href="#2017-04-10-1" class="headerlink" title="2017-04-10"></a>2017-04-10</h2><p><a href="http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1677&amp;konwledgeId=134" target="_blank" rel="external">约德尔测试</a></p>
+<p>题目描述</p>
+<p>兰博和提莫闲聊之后，回归到了他们的正题，约德尔人的未来。<br>说起约德尔人的未来，黑默丁格曾经提出了一个约德尔测试，将约德尔人的历史的每个阶段都用一个字符表达出来。(包括可写字符,不包括空格。)。然后将这个字符串转化为一个01串。转化规则是如果这个字符如果是字母或者数字，这个字符变为1,其它变为0。然后将这个01串和黑默丁格观测星空得到的01串做比较，得到一个相似率。相似率越高,则约德尔的未来越光明。<br>请问:相似率为多少？</p>
+<p>输入</p>
+<p>每组输入数据为两行，第一行为有关约德尔人历史的字符串，第二行是黑默丁格观测星空得到的字符串。</p>
+<p>(两个字符串的长度相等,字符串长度不小于1且不超过1000。)</p>
+<p>输出</p>
+<p>输出一行，在这一行输出相似率。用百分数表示。(相似率为相同字符的个数/总个数,精确到百分号小数点后两位。printf(“%%”);输出一个%。)</p>
+<p>样例输入</p>
+<p>@!%12dgsa</p>
+<p>010111100</p>
+<p>样例输出</p>
+<p>66.67%</p>
+<pre><code>myAnswer:
+
+var str1 = read_line().trim();
+var str2 = read_line().trim();
+var count = 0, result = &apos;&apos;;
+
+for (var i = 0; i &lt; str1.length; i ++) {
+    if (/[0-9a-zA-Z]/.test(str1[i])) {
+        if (str2[i] == &apos;1&apos;) {
+            count ++;
+        }
+    } else {
+        if (str2[i] == &apos;0&apos;) {
+            count ++;
+        }
+    }
+}
+result = (100 * count / str2.length).toFixed(2) + &apos;%&apos;;
+
+print(result);
+</code></pre><p>就是正则 没啥说的 </p>
+
           
         
       
