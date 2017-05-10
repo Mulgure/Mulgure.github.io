@@ -74,7 +74,7 @@ You may assume that each input would have exactly one">
 2017-04-02Two Sum
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 You may assume that each input would have exactly one">
-<meta property="og:updated_time" content="2017-04-24T07:24:08.000Z">
+<meta property="og:updated_time" content="2017-04-25T16:04:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每日一道算法题">
 <meta name="twitter:description" content="前言不算一时兴起 只是单纯感受到自己的不足
@@ -620,7 +620,48 @@ result = (100 * count / str2.length).toFixed(2) + &apos;%&apos;;
 
 print(result);
 </code></pre><p>就是正则 没啥说的 </p>
+<h2 id="2017-04-11"><a href="#2017-04-11" class="headerlink" title="2017-04-11"></a>2017-04-11</h2><p><a href="http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1659&amp;konwledgeId=134" target="_blank" rel="external">公交车乘客</a></p>
+<p>题目描述</p>
+<p>一个公交车经过n个站点，乘客从前门上车，从后门下车。</p>
+<p>现在统计了在第i个站，下车人数a[i]，以及上车人数b[i]。</p>
+<p>问公交车运行时候车上最多有多少乘客</p>
+<p>输入</p>
+<p>第一行读入一个整数n(1&lt;=n&lt;=100)，表示有n个站点</p>
+<p>接下来n行，每行两个数值，分别表示在第i个站点下车人数和上车人数</p>
+<p>输出</p>
+<p>每组输出车上最多的乘客数目</p>
+<p>样例输入<br>4</p>
+<p>0 3</p>
+<p>2 5</p>
+<p>4 2</p>
+<p>4 0</p>
+<p>样例输出</p>
+<p>6</p>
+<p>myAnswer:</p>
+<pre><code>var n = parseInt(read_line());
+            var count = 0;
+            var max = 0;
 
+            var up = 0,
+                down = 0;
+
+            var line;
+
+            for (var i = 0; i &lt; n; i++){
+                line = read_line().split(&quot; &quot;);
+
+                down = parseInt(line[0]);
+                up = parseInt(line[1]);
+
+                count = count - down + up;
+
+                if (count &gt; max){
+                    max = count;
+                }
+            }
+
+            print(max);
+</code></pre>
       
     </div>
 
@@ -652,6 +693,10 @@ print(result);
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/10/搬运向——JS书写风格/" rel="prev" title="搬运向——JS书写风格">
+                搬运向——JS书写风格 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -723,7 +768,7 @@ print(result);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -782,7 +827,7 @@ print(result);
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-02"><span class="nav-number">2.</span> <span class="nav-text">2017-04-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-03"><span class="nav-number">3.</span> <span class="nav-text">2017-04-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-04"><span class="nav-number">4.</span> <span class="nav-text">2017-04-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-05"><span class="nav-number">5.</span> <span class="nav-text">2017-04-05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-06"><span class="nav-number">6.</span> <span class="nav-text">2017-04-06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-07"><span class="nav-number">7.</span> <span class="nav-text">2017-04-07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-08"><span class="nav-number">8.</span> <span class="nav-text">2017-04-08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-09"><span class="nav-number">9.</span> <span class="nav-text">2017-04-09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-10"><span class="nav-number">10.</span> <span class="nav-text">2017-04-10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-10-1"><span class="nav-number">11.</span> <span class="nav-text">2017-04-10</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-02"><span class="nav-number">2.</span> <span class="nav-text">2017-04-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-03"><span class="nav-number">3.</span> <span class="nav-text">2017-04-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-04"><span class="nav-number">4.</span> <span class="nav-text">2017-04-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-05"><span class="nav-number">5.</span> <span class="nav-text">2017-04-05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-06"><span class="nav-number">6.</span> <span class="nav-text">2017-04-06</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-07"><span class="nav-number">7.</span> <span class="nav-text">2017-04-07</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-08"><span class="nav-number">8.</span> <span class="nav-text">2017-04-08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-09"><span class="nav-number">9.</span> <span class="nav-text">2017-04-09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-10"><span class="nav-number">10.</span> <span class="nav-text">2017-04-10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-10-1"><span class="nav-number">11.</span> <span class="nav-text">2017-04-10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-11"><span class="nav-number">12.</span> <span class="nav-text">2017-04-11</span></a></li></ol></div>
             
           </div>
         </section>

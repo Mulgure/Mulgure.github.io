@@ -84,7 +84,7 @@ Jq的
 $(&amp;quot;.all&amp;quot;).click(function(){    
    if(this.checked){    
         $(&amp;quot;table .checkbox&amp;quot;).attr(&amp;quot;checked&amp;qu">
-<meta property="og:updated_time" content="2017-03-15T16:31:42.000Z">
+<meta property="og:updated_time" content="2017-05-03T13:16:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS学习遇到的坑 (大坑慢慢填)">
 <meta name="twitter:description" content="下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用
@@ -402,6 +402,23 @@ alert(a);//[object Object]
 <ol>
 <li>因此，第一个是默认值object，第二个是对象的名字Object.</li>
 </ol>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in "></a>for-in </h2><p>for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。(似乎是跟浏览器有关 其实绝大部分情况还是按输入顺序输出的 旧式浏览器就难说了)</p>
+<p> for-in 不仅仅遍历 array 自身的属性，其还遍历 array 原型链上的所有可枚举的属性。</p>
+<p> eg:</p>
+<pre><code>Array.prototype.fatherName = &quot;Father&quot;;
+const arr = [1, 2, 3];
+arr.name = &quot;Hello world&quot;;
+let index;
+for(index in arr) {
+    console.log(&quot;arr[&quot; + index + &quot;] = &quot; + arr[index]);
+}
+</code></pre><p>结果:</p>
+<pre><code>arr[0] = 1
+arr[1] = 2
+arr[2] = 3
+arr[name] = Hello world
+arr[fatherName] = Father
+</code></pre><p>ps:for-in性能不佳 除非明确需要迭代一个属性数量未知的对象 否则应避免使用for-in</p>
 
       
     </div>
@@ -515,7 +532,7 @@ alert(a);//[object Object]
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -574,7 +591,7 @@ alert(a);//[object Object]
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jq的"><span class="nav-number">1.</span> <span class="nav-text">Jq的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关数的"><span class="nav-number">2.</span> <span class="nav-text">有关数的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量值的复制"><span class="nav-number">3.</span> <span class="nav-text">变量值的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容很散"><span class="nav-number">4.</span> <span class="nav-text">内容很散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个关于连等赋值的题"><span class="nav-number">5.</span> <span class="nav-text">一个关于连等赋值的题 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">6.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof与instanceof"><span class="nav-number">7.</span> <span class="nav-text">typeof与instanceof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object-Object"><span class="nav-number">8.</span> <span class="nav-text">[object Object]</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jq的"><span class="nav-number">1.</span> <span class="nav-text">Jq的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关数的"><span class="nav-number">2.</span> <span class="nav-text">有关数的 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量值的复制"><span class="nav-number">3.</span> <span class="nav-text">变量值的复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容很散"><span class="nav-number">4.</span> <span class="nav-text">内容很散</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个关于连等赋值的题"><span class="nav-number">5.</span> <span class="nav-text">一个关于连等赋值的题 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法作用域"><span class="nav-number">6.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof与instanceof"><span class="nav-number">7.</span> <span class="nav-text">typeof与instanceof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#object-Object"><span class="nav-number">8.</span> <span class="nav-text">[object Object]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in"><span class="nav-number">9.</span> <span class="nav-text">for-in </span></a></li></ol></div>
             
           </div>
         </section>

@@ -208,6 +208,159 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/10/搬运向——JS书写风格/" itemprop="url">
+                  搬运向——JS书写风格
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-10T19:35:53+08:00" content="2017-05-10">
+              2017-05-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/10/搬运向——JS书写风格/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/10/搬运向——JS书写风格/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://medium.com/javascript-scene/elements-of-javascript-style-caa8821cb99f" target="_blank" rel="external">这里是原文</a></p>
+<p>#写在前面 </p>
+<p>原文是英文 篇幅很长 但是核心思想很简单 下面稍作翻译 </p>
+<h2 id="函数是功能的基本单位-一个函数对应一个功能"><a href="#函数是功能的基本单位-一个函数对应一个功能" class="headerlink" title="函数是功能的基本单位 一个函数对应一个功能"></a>函数是功能的基本单位 一个函数对应一个功能</h2><p>JS中函数可以分为三种 代理函数(作为通信交流的函数) 命令型函数(这种函数就是指令的集合) 映射型函数(给定输入，返回相应输出)</p>
+<p>这里的原则是 如果功能适用于I/O，请勿将该I/O与计算进行混合 如果功能用于映射 请勿将其与I/O进行混合</p>
+<p>最理想的就是 纯函数 这也是一个提的很多的词 纯函数的约束条件是 给出同样的参数值 该函数总是求出同样的结果;结果的求值不会促使任何可语义上可观察的副作用或输出  </p>
+<h2 id="简化代码"><a href="#简化代码" class="headerlink" title="简化代码"></a>简化代码</h2><p>这个简要提几句就行了 </p>
+<pre><code>function secret (message) {
+    return function () {
+        return message;
+    }
+};
+</code></pre><p>与 const secret = msg =&gt; () =&gt; msg;</p>
+<p>原则</p>
+<pre><code>如果你可以用较少的语句实现同样的功能而不改变或模糊语义 
+如果你可以用较少的变量实现同样的功能而不改变或模糊语义 
+那么 就这么做吧
+</code></pre><h2 id="变量命名用主动语态"><a href="#变量命名用主动语态" class="headerlink" title="变量命名用主动语态"></a>变量命名用主动语态</h2><pre><code>myFunction.wasCalled()优于myFunction.hasBeenCalled()
+createUser()优于User.create()
+notify()优于Notifier.doNotification()
+</code></pre><p>如果涉及到了布尔值 尽量用is开头</p>
+<pre><code>isFirstRun = false优于firstRun = false
+</code></pre><p>函数命名用尽量用动词</p>
+<pre><code>increment()优于than plusOne()
+unzip()优于filesFromZip()
+</code></pre><p>如果是涉及到事件处理 用&lt;状态&gt;&lt;动词&gt;命名</p>
+<pre><code>element.onClick(handleClick)优于element.click(handleClick)
+component.onDragStart(handleDragStart)优于 component.startDrag(handleDragStart)
+</code></pre><p>生命周期</p>
+<pre><code>componentWillBeUpdated(doSomething)
+componentWillUpdate(doSomething)
+beforeUpdate(doSomething)
+</code></pre><p>这三者 比较一下 孰优孰劣 一眼便知</p>
+<h2 id="减少耦合-减少重复"><a href="#减少耦合-减少重复" class="headerlink" title="减少耦合 减少重复"></a>减少耦合 减少重复</h2><p>实现功能的可分离</p>
+<p>每个组件可以重用相同的结构和生命周期挂钩 并且性能更好 能减少重复找工作 同时增加代码的可维护性</p>
+<p>## 将关联代码放置在一起</p>
+<p>模块化的基础之一 不赘述 不如去看一个项目的文件结构</p>
+<h2 id="肯定语气优于否定"><a href="#肯定语气优于否定" class="headerlink" title="肯定语气优于否定"></a>肯定语气优于否定</h2><pre><code>isFlying优于isNotFlying
+late优于notOnTime
+</code></pre><p>代码块的话</p>
+<pre><code>if (err) return reject(err);
+// do something...
+</code></pre><p>优于</p>
+<pre><code>if (!err) {
+// ... do something
+} else {
+return reject(err);
+}
+</code></pre><p>这个否定也包含undefined和null</p>
+<h2 id="并行概念使用并行代码"><a href="#并行概念使用并行代码" class="headerlink" title="并行概念使用并行代码"></a>并行概念使用并行代码</h2><p>抛出几个关键词吧 组件 JSX与HTML模板 说白了 就是各类JS框架的舞台</p>
+<h1 id="一言以蔽之-代码应简单化"><a href="#一言以蔽之-代码应简单化" class="headerlink" title="一言以蔽之 代码应简单化"></a>一言以蔽之 代码应简单化</h1><p>关键词是</p>
+<pre><code>减少bug
+易于调试
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/04/02/每日一道算法题/" itemprop="url">
                   每日一道算法题
                 </a>
@@ -614,7 +767,48 @@ result = (100 * count / str2.length).toFixed(2) + &apos;%&apos;;
 
 print(result);
 </code></pre><p>就是正则 没啥说的 </p>
+<h2 id="2017-04-11"><a href="#2017-04-11" class="headerlink" title="2017-04-11"></a>2017-04-11</h2><p><a href="http://exercise.acmcoder.com/online/online_judge_ques?ques_id=1659&amp;konwledgeId=134" target="_blank" rel="external">公交车乘客</a></p>
+<p>题目描述</p>
+<p>一个公交车经过n个站点，乘客从前门上车，从后门下车。</p>
+<p>现在统计了在第i个站，下车人数a[i]，以及上车人数b[i]。</p>
+<p>问公交车运行时候车上最多有多少乘客</p>
+<p>输入</p>
+<p>第一行读入一个整数n(1&lt;=n&lt;=100)，表示有n个站点</p>
+<p>接下来n行，每行两个数值，分别表示在第i个站点下车人数和上车人数</p>
+<p>输出</p>
+<p>每组输出车上最多的乘客数目</p>
+<p>样例输入<br>4</p>
+<p>0 3</p>
+<p>2 5</p>
+<p>4 2</p>
+<p>4 0</p>
+<p>样例输出</p>
+<p>6</p>
+<p>myAnswer:</p>
+<pre><code>var n = parseInt(read_line());
+            var count = 0;
+            var max = 0;
 
+            var up = 0,
+                down = 0;
+
+            var line;
+
+            for (var i = 0; i &lt; n; i++){
+                line = read_line().split(&quot; &quot;);
+
+                down = parseInt(line[0]);
+                up = parseInt(line[1]);
+
+                count = count - down + up;
+
+                if (count &gt; max){
+                    max = count;
+                }
+            }
+
+            print(max);
+</code></pre>
           
         
       
@@ -1476,6 +1670,23 @@ alert(a);//[object Object]
 <ol>
 <li>因此，第一个是默认值object，第二个是对象的名字Object.</li>
 </ol>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in "></a>for-in </h2><p>for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。(似乎是跟浏览器有关 其实绝大部分情况还是按输入顺序输出的 旧式浏览器就难说了)</p>
+<p> for-in 不仅仅遍历 array 自身的属性，其还遍历 array 原型链上的所有可枚举的属性。</p>
+<p> eg:</p>
+<pre><code>Array.prototype.fatherName = &quot;Father&quot;;
+const arr = [1, 2, 3];
+arr.name = &quot;Hello world&quot;;
+let index;
+for(index in arr) {
+    console.log(&quot;arr[&quot; + index + &quot;] = &quot; + arr[index]);
+}
+</code></pre><p>结果:</p>
+<pre><code>arr[0] = 1
+arr[1] = 2
+arr[2] = 3
+arr[name] = Hello world
+arr[fatherName] = Father
+</code></pre><p>ps:for-in性能不佳 除非明确需要迭代一个属性数量未知的对象 否则应避免使用for-in</p>
 
           
         
@@ -2049,7 +2260,7 @@ let mySearch: SearchFunc;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
