@@ -208,6 +208,152 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/17/nodejs学习笔记/" itemprop="url">
+                  nodejs学习笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-17T00:28:45+08:00" content="2017-05-17">
+              2017-05-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/17/nodejs学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/17/nodejs学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习资料根据<a href="http://nodejs.cn/api/assert.html" target="_blank" rel="external">Node.js中文网</a> </p>
+<p>主要是归纳总结相同点 不会照抄太多API</p>
+<h1 id="Assert-断言"><a href="#Assert-断言" class="headerlink" title="Assert(断言)"></a>Assert(断言)</h1><pre><code>头部：const assert = require(&apos;assert&apos;);
+</code></pre><h3 id="assert-与-assert-ok"><a href="#assert-与-assert-ok" class="headerlink" title="assert( )与 assert.ok( )"></a>assert( )与 assert.ok( )</h3><p>参数均为 value&lt;any\&gt;[, message&lt;any\&gt;]</p>
+<p>两者相同 </p>
+<p>如果 value 不为真值，则抛出一个带有 message 属性的 AssertionError，其中 message 属性的值等于传入的 message 参数的值。 如果 message 参数为 undefined，则赋予默认的错误信息。</p>
+<pre><code>const assert = require(&apos;assert&apos;);
+assert.ok(1);
+// 通过
+assert.ok(false);
+// 抛出 &quot;AssertionError: false == true&quot;
+</code></pre><h3 id="assert-ifError"><a href="#assert-ifError" class="headerlink" title="assert.ifError( )"></a>assert.ifError( )</h3><p>参数为value&lt;any\&gt;</p>
+<p>如果 value 为真，则抛出 value。</p>
+<h3 id="assert-fail"><a href="#assert-fail" class="headerlink" title="assert.fail( )"></a>assert.fail( )</h3><p>参数为actual&lt;any&gt;, expected&lt;any&gt;, message&lt;any&gt;, operator&lt;String&gt;</p>
+<p>抛出 AssertionError。 如果 message 不存在，则错误信息会被设为 actual 的值加分隔符 operator 再加 expected 的值。 否则，错误信息为 message 的值。</p>
+<pre><code>const assert = require(&apos;assert&apos;);
+
+assert.fail(1, 2, undefined, &apos;&gt;&apos;);
+// 抛出 AssertionError: 1 &gt;; 2
+
+assert.fail(1, 2, &apos;错误信息&apos;, &apos;&gt;&apos;);
+// 抛出 AssertionError: 错误信息
+</code></pre><h3 id="assert-equal-assert-strictEqual-assert-deepEqual-assert-deepStrictEqual"><a href="#assert-equal-assert-strictEqual-assert-deepEqual-assert-deepStrictEqual" class="headerlink" title="assert.equal( ) assert.strictEqual( ) assert.deepEqual( ) assert.deepStrictEqual( )"></a>assert.equal( ) assert.strictEqual( ) assert.deepEqual( ) assert.deepStrictEqual( )</h3><p>参数均为 actual&lt;any&gt;, expected&lt;any&gt;[, message&lt;any&gt;]</p>
+<p>assert.equal( )：使用相等运算符（==）测试 actual 参数与 expected 参数是否相等。</p>
+<p>assert.strictEqual( )：使用全等运算符（===）测试是否全等。</p>
+<p>assert.deepEqual( )：测试 actual 参数与 expected 参数是否深度相等。 原始值使用相等运算符（==）比较。只比较可枚举的自身属性，不比较对象的原型、连接符、或不可枚举的属性。</p>
+<p>assert.deepStrictEqual( )：大多数情况下与 assert.deepEqual() 一样，但有两个例外。 首先，原始值使用全等运算符（===）比较。 其次，对象的比较包括检查它们的原型是否全等。</p>
+<p>两两比较 区别在于”==”与”===”;基本类型与引用类型(比如说用assert.equal( )去比较对象，只要地址不同，就会抛出错误)；是否检查原型等等。具体对应哪两对，看定义即可。</p>
+<h3 id="assert-throws-与assert-doesNotThrow"><a href="#assert-throws-与assert-doesNotThrow" class="headerlink" title="assert.throws( )与assert.doesNotThrow( )"></a>assert.throws( )与assert.doesNotThrow( )</h3><p>参数均为 block&lt;Function&gt;[, error&lt;RegExp&gt; | &lt;Function&gt;][, message&lt;any&gt;]</p>
+<p>当 assert.throws( )被调用时，如果 block 抛出错误且错误类型与 error 参数指定的相同，则通过。 如果错误类型不相同，或 error 参数是 undefined，则错误会被抛回给调用者；当 block 不抛出错误时，message 会作为 error 的错误信息;</p>
+<p>当 assert.doesNotThrow() 被调用时，它会立即调用 block 函数。<br>如果抛出错误且错误类型与 error 参数指定的相同，则抛出 AssertionError。 如果错误类型不相同，或 error 参数是 undefined，则错误会被抛回给调用者；当 block 不抛出错误时，则通过</p>
+<h1 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h1><p>Buffer 类是一个全局变量 无需require(‘buffer’).Buffer</p>
+<h2 id="新建Buffer"><a href="#新建Buffer" class="headerlink" title="新建Buffer"></a>新建Buffer</h2><h3 id="Buffer-alloc-size-lt-Integer-gt-fill-lt-String-gt-encoding-lt-String-gt"><a href="#Buffer-alloc-size-lt-Integer-gt-fill-lt-String-gt-encoding-lt-String-gt" class="headerlink" title="Buffer.alloc(size&lt;Integer&gt;[,fill&lt;String&gt;[, encoding&lt;String&gt;]])"></a>Buffer.alloc(size&lt;Integer&gt;[,fill&lt;String&gt;[, encoding&lt;String&gt;]])</h3><h3 id="Buffer-allocUnsafe-size-lt-Integer-gt"><a href="#Buffer-allocUnsafe-size-lt-Integer-gt" class="headerlink" title="Buffer.allocUnsafe(size&lt;Integer&gt;)"></a>Buffer.allocUnsafe(size&lt;Integer&gt;)</h3><h3 id="Buffer-allocUnsafeSlow-size-lt-Integer-gt"><a href="#Buffer-allocUnsafeSlow-size-lt-Integer-gt" class="headerlink" title="Buffer.allocUnsafeSlow(size&lt;Integer&gt;)"></a>Buffer.allocUnsafeSlow(size&lt;Integer&gt;)</h3><p>区别：Buffer.alloc( )内容用fill预填充；后两者内容是未知的，且可能包含敏感数据。</p>
+<p>后两者间区别在于前者会预分配一个内部Buffer实例作为快速分配池,而后者是非池Buffer。</p>
+<h2 id="Buffer比较-合并等操作"><a href="#Buffer比较-合并等操作" class="headerlink" title="Buffer比较 合并等操作"></a>Buffer比较 合并等操作</h2><h3 id="Buffer-compare-buf1-lt-Buffer-gt-buf2-lt-Buffer-gt"><a href="#Buffer-compare-buf1-lt-Buffer-gt-buf2-lt-Buffer-gt" class="headerlink" title="Buffer.compare(buf1&lt;Buffer&gt;, buf2&lt;Buffer&gt;)"></a>Buffer.compare(buf1&lt;Buffer&gt;, buf2&lt;Buffer&gt;)</h3><p>返回一个数 跟sort()那一堆玩意挺像的</p>
+<h3 id="Buffer-concat-list-totalLength"><a href="#Buffer-concat-list-totalLength" class="headerlink" title="Buffer.concat(list[, totalLength])"></a>Buffer.concat(list[, totalLength])</h3><p>返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer</p>
+<h2 id="Buffer填充数据"><a href="#Buffer填充数据" class="headerlink" title="Buffer填充数据"></a>Buffer填充数据</h2><h3 id="Buffer-from-array"><a href="#Buffer-from-array" class="headerlink" title="Buffer.from(array)"></a>Buffer.from(array)</h3><p>通过一个八位字节的array创建一个新的Buffer。</p>
+<pre><code>// 创建一个新的包含字符串 &apos;buffer&apos; 的 UTF-8 字节的 Buffer
+const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+</code></pre><h3 id="Buffer-from-buffer-lt-Buffer-gt"><a href="#Buffer-from-buffer-lt-Buffer-gt" class="headerlink" title="Buffer.from(buffer&lt;Buffer&gt;)"></a>Buffer.from(buffer&lt;Buffer&gt;)</h3><p>拷贝一个Buffer</p>
+<h3 id="Buffer-from-string-lt-String-gt-encoding-lt-String-gt"><a href="#Buffer-from-string-lt-String-gt-encoding-lt-String-gt" class="headerlink" title="Buffer.from(string&lt;String&gt;[, encoding&lt;String&gt;])"></a>Buffer.from(string&lt;String&gt;[, encoding&lt;String&gt;])</h3><p>新建一个包含所给的JavaScript字符串string的Buffer。encoding参数指定string的字符编码。</p>
+<h2 id="Buffer读写操作"><a href="#Buffer读写操作" class="headerlink" title="Buffer读写操作"></a>Buffer读写操作</h2><p>对于不同类型的数值，有不同的读写方法</p>
+<p>大致有 </p>
+<p>读</p>
+<h3 id="buf-readDoubleBE-offset-noAssert"><a href="#buf-readDoubleBE-offset-noAssert" class="headerlink" title="buf.readDoubleBE(offset[, noAssert])"></a>buf.readDoubleBE(offset[, noAssert])</h3><h3 id="buf-readDoubleLE-offset-noAssert"><a href="#buf-readDoubleLE-offset-noAssert" class="headerlink" title="buf.readDoubleLE(offset[, noAssert])"></a>buf.readDoubleLE(offset[, noAssert])</h3><h3 id="buf-readFloatBE-offset-noAssert"><a href="#buf-readFloatBE-offset-noAssert" class="headerlink" title="buf.readFloatBE(offset[, noAssert])"></a>buf.readFloatBE(offset[, noAssert])</h3><h3 id="buf-readFloatLE-offset-noAssert"><a href="#buf-readFloatLE-offset-noAssert" class="headerlink" title="buf.readFloatLE(offset[, noAssert])"></a>buf.readFloatLE(offset[, noAssert])</h3><h3 id="buf-readInt8-offset-noAssert"><a href="#buf-readInt8-offset-noAssert" class="headerlink" title="buf.readInt8(offset[, noAssert])"></a>buf.readInt8(offset[, noAssert])</h3><h3 id="buf-readInt16BE-offset-noAssert"><a href="#buf-readInt16BE-offset-noAssert" class="headerlink" title="buf.readInt16BE(offset[, noAssert])"></a>buf.readInt16BE(offset[, noAssert])</h3><h3 id="buf-readInt16LE-offset-noAssert"><a href="#buf-readInt16LE-offset-noAssert" class="headerlink" title="buf.readInt16LE(offset[, noAssert])"></a>buf.readInt16LE(offset[, noAssert])</h3><h3 id="buf-readInt32BE-offset-noAssert"><a href="#buf-readInt32BE-offset-noAssert" class="headerlink" title="### buf.readInt32BE(offset[, noAssert])"></a>### buf.readInt32BE(offset[, noAssert])</h3><h3 id="buf-readInt32LE-offset-noAssert"><a href="#buf-readInt32LE-offset-noAssert" class="headerlink" title="buf.readInt32LE(offset[, noAssert])"></a>buf.readInt32LE(offset[, noAssert])</h3><h3 id="buf-readIntBE-offset-byteLength-noAssert"><a href="#buf-readIntBE-offset-byteLength-noAssert" class="headerlink" title="buf.readIntBE(offset, byteLength[, noAssert])"></a>buf.readIntBE(offset, byteLength[, noAssert])</h3><h3 id="buf-readIntLE-offset-byteLength-noAssert"><a href="#buf-readIntLE-offset-byteLength-noAssert" class="headerlink" title="buf.readIntLE(offset, byteLength[, noAssert])"></a>buf.readIntLE(offset, byteLength[, noAssert])</h3><h3 id="buf-readUInt8-offset-noAssert"><a href="#buf-readUInt8-offset-noAssert" class="headerlink" title="buf.readUInt8(offset[, noAssert])"></a>buf.readUInt8(offset[, noAssert])</h3><h3 id="buf-readUInt16BE-offset-noAssert"><a href="#buf-readUInt16BE-offset-noAssert" class="headerlink" title="buf.readUInt16BE(offset[, noAssert])"></a>buf.readUInt16BE(offset[, noAssert])</h3><h3 id="buf-readUInt16LE-offset-noAssert"><a href="#buf-readUInt16LE-offset-noAssert" class="headerlink" title="buf.readUInt16LE(offset[, noAssert])"></a>buf.readUInt16LE(offset[, noAssert])</h3><h3 id="buf-readUInt32BE-offset-noAssert"><a href="#buf-readUInt32BE-offset-noAssert" class="headerlink" title="buf.readUInt32BE(offset[, noAssert])"></a>buf.readUInt32BE(offset[, noAssert])</h3><h3 id="buf-readUInt32LE-offset-noAssert"><a href="#buf-readUInt32LE-offset-noAssert" class="headerlink" title="buf.readUInt32LE(offset[, noAssert])"></a>buf.readUInt32LE(offset[, noAssert])</h3><h3 id="buf-readUIntBE-offset-byteLength-noAssert"><a href="#buf-readUIntBE-offset-byteLength-noAssert" class="headerlink" title="buf.readUIntBE(offset, byteLength[, noAssert])"></a>buf.readUIntBE(offset, byteLength[, noAssert])</h3><h3 id="buf-readUIntLE-offset-byteLength-noAssert"><a href="#buf-readUIntLE-offset-byteLength-noAssert" class="headerlink" title="buf.readUIntLE(offset, byteLength[, noAssert])"></a>buf.readUIntLE(offset, byteLength[, noAssert])</h3><p>写</p>
+<h3 id="buf-write-string-offset-length-encoding"><a href="#buf-write-string-offset-length-encoding" class="headerlink" title="buf.write(string[, offset[, length]][, encoding])"></a>buf.write(string[, offset[, length]][, encoding])</h3><h3 id="buf-writeDoubleBE-value-offset-noAssert"><a href="#buf-writeDoubleBE-value-offset-noAssert" class="headerlink" title="buf.writeDoubleBE(value, offset[, noAssert])"></a>buf.writeDoubleBE(value, offset[, noAssert])</h3><h3 id="buf-writeDoubleLE-value-offset-noAssert"><a href="#buf-writeDoubleLE-value-offset-noAssert" class="headerlink" title="buf.writeDoubleLE(value, offset[, noAssert])"></a>buf.writeDoubleLE(value, offset[, noAssert])</h3><h3 id="buf-writeFloatBE-value-offset-noAssert"><a href="#buf-writeFloatBE-value-offset-noAssert" class="headerlink" title="buf.writeFloatBE(value, offset[, noAssert])"></a>buf.writeFloatBE(value, offset[, noAssert])</h3><h3 id="buf-writeFloatLE-value-offset-noAssert"><a href="#buf-writeFloatLE-value-offset-noAssert" class="headerlink" title="buf.writeFloatLE(value, offset[, noAssert])"></a>buf.writeFloatLE(value, offset[, noAssert])</h3><h3 id="buf-writeInt8-value-offset-noAssert"><a href="#buf-writeInt8-value-offset-noAssert" class="headerlink" title="buf.writeInt8(value, offset[, noAssert])"></a>buf.writeInt8(value, offset[, noAssert])</h3><h3 id="buf-writeInt16BE-value-offset-noAssert"><a href="#buf-writeInt16BE-value-offset-noAssert" class="headerlink" title="buf.writeInt16BE(value, offset[, noAssert])"></a>buf.writeInt16BE(value, offset[, noAssert])</h3><h3 id="buf-writeInt16LE-value-offset-noAssert"><a href="#buf-writeInt16LE-value-offset-noAssert" class="headerlink" title="buf.writeInt16LE(value, offset[, noAssert])"></a>buf.writeInt16LE(value, offset[, noAssert])</h3><h3 id="buf-writeInt32BE-value-offset-noAssert"><a href="#buf-writeInt32BE-value-offset-noAssert" class="headerlink" title="buf.writeInt32BE(value, offset[, noAssert])"></a>buf.writeInt32BE(value, offset[, noAssert])</h3><h3 id="buf-writeInt32LE-value-offset-noAssert"><a href="#buf-writeInt32LE-value-offset-noAssert" class="headerlink" title="buf.writeInt32LE(value, offset[, noAssert])"></a>buf.writeInt32LE(value, offset[, noAssert])</h3><h3 id="buf-writeIntBE-value-offset-byteLength-noAssert"><a href="#buf-writeIntBE-value-offset-byteLength-noAssert" class="headerlink" title="buf.writeIntBE(value, offset, byteLength[, noAssert])"></a>buf.writeIntBE(value, offset, byteLength[, noAssert])</h3><h3 id="buf-writeIntLE-value-offset-byteLength-noAssert"><a href="#buf-writeIntLE-value-offset-byteLength-noAssert" class="headerlink" title="buf.writeIntLE(value, offset, byteLength[, noAssert])"></a>buf.writeIntLE(value, offset, byteLength[, noAssert])</h3><h3 id="buf-writeUInt8-value-offset-noAssert"><a href="#buf-writeUInt8-value-offset-noAssert" class="headerlink" title="buf.writeUInt8(value, offset[, noAssert])"></a>buf.writeUInt8(value, offset[, noAssert])</h3><h3 id="buf-writeUInt16BE-value-offset-noAssert"><a href="#buf-writeUInt16BE-value-offset-noAssert" class="headerlink" title="buf.writeUInt16BE(value, offset[, noAssert])"></a>buf.writeUInt16BE(value, offset[, noAssert])</h3><h3 id="buf-writeUInt16LE-value-offset-noAssert"><a href="#buf-writeUInt16LE-value-offset-noAssert" class="headerlink" title="buf.writeUInt16LE(value, offset[, noAssert])"></a>buf.writeUInt16LE(value, offset[, noAssert])</h3><h3 id="buf-writeUInt32BE-value-offset-noAssert"><a href="#buf-writeUInt32BE-value-offset-noAssert" class="headerlink" title="buf.writeUInt32BE(value, offset[, noAssert])"></a>buf.writeUInt32BE(value, offset[, noAssert])</h3><h3 id="buf-writeUInt32LE-value-offset-noAssert"><a href="#buf-writeUInt32LE-value-offset-noAssert" class="headerlink" title="buf.writeUInt32LE(value, offset[, noAssert])"></a>buf.writeUInt32LE(value, offset[, noAssert])</h3><h3 id="buf-writeUIntBE-value-offset-byteLength-noAssert"><a href="#buf-writeUIntBE-value-offset-byteLength-noAssert" class="headerlink" title="buf.writeUIntBE(value, offset, byteLength[, noAssert])"></a>buf.writeUIntBE(value, offset, byteLength[, noAssert])</h3><h3 id="buf-writeUIntLE-value-offset-byteLength-noAssert"><a href="#buf-writeUIntLE-value-offset-byteLength-noAssert" class="headerlink" title="buf.writeUIntLE(value, offset, byteLength[, noAssert])"></a>buf.writeUIntLE(value, offset, byteLength[, noAssert])</h3><p>其中，offset为读/写位置，noAssert&lt;Boolean&gt; 为是否检验 value为写入值，byteLength为读取长度</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/10/搬运向——JS书写风格/" itemprop="url">
                   搬运向——JS书写风格
                 </a>
@@ -1687,7 +1833,14 @@ arr[2] = 3
 arr[name] = Hello world
 arr[fatherName] = Father
 </code></pre><p>ps:for-in性能不佳 除非明确需要迭代一个属性数量未知的对象 否则应避免使用for-in</p>
-
+<h2 id="setTimeout-的参数"><a href="#setTimeout-的参数" class="headerlink" title="setTimeout()的参数"></a>setTimeout()的参数</h2><p>其实setTimeout()并不止两个参数 写完整是这样的 setTimeout(func, delay, param1, param2, …)</p>
+<p>第三个参数及以后的参数都可以作为func函数的参数</p>
+<p>举个例子：</p>
+<pre><code>function a(x, y) {
+    console.log(x, y) // 2 3
+}
+setTimeout(a, 1000, 2, 3)
+</code></pre>
           
         
       
@@ -1836,392 +1989,13 @@ background-clip: padding-box;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/18/Typescript学习笔记/" itemprop="url">
-                  Typescript学习笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T19:18:34+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/18/Typescript学习笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/Typescript学习笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="2016-9-25"><a href="#2016-9-25" class="headerlink" title="2016.9.25"></a>2016.9.25</h2><p>模块(1)</p>
-<p>“模块在其自身的作用域里执行，而不是在全局作用域里；这意味着定义在一个模块里的变量，函数，类等等在模块外部是不可见的，除非你明确地使用export形式之一导出它们。 相反，如果想使用其它模块导出的变量，函数，类，接口等的时候，你必须要导入它们，可以使用 import形式之一。”</p>
-<p>导出:</p>
-<p>添加export关键字</p>
-<p>Validation.ts</p>
-<pre><code>export interface StringValidator {
-    isAcceptable(s: string): boolean;
-}
-</code></pre><p>ZipCodeValidator.ts</p>
-<pre><code>export const numberRegexp = /^[0-9]+$/;
-
-export class ZipCodeValidator implements StringValidator {
-    isAcceptable(s: string) {
-        return s.length === 5 &amp;&amp; numberRegexp.test(s);
-    }
-}
-</code></pre><p>重命名：</p>
-<pre><code>export { ZipCodeValidator };
-
-export { ZipCodeValidator as mainValidator };
-</code></pre><p>导出多个模块：用 export * from “module”</p>
-<p>eg：</p>
-<pre><code>export * from &quot;./StringValidator&quot;; // exports interface StringValidator
-export * from &quot;./LettersOnlyValidator&quot;; // exports class LettersOnlyValidator
-export * from &quot;./ZipCodeValidator&quot;;  // exports class ZipCodeValidator
-</code></pre><p>默认导出(真心不懂):使用 default关键字标记;一个模块只能够有一个default导出。(黑人问号.jpg)</p>
-<p> 比如，像JQuery这样的类库可能有一个默认导出 jQuery或$，并且我们基本上也会使用同样的名字jQuery或$导出JQuery。</p>
-<p>JQuery.d.ts</p>
-<pre><code>declare let $: JQuery;
-export default $;
-</code></pre><p>App.ts</p>
-<pre><code>import $ from &quot;JQuery&quot;;
-
-$(&quot;button.continue&quot;).html( &quot;Next Step...&quot; );
-</code></pre><p>其他有意思的：比如默认导出可以是一个值啦啥的</p>
-<p>OneTwoThree.ts</p>
-<pre><code>export default &quot;123&quot;;
-</code></pre><p>Log.ts</p>
-<pre><code>import num from &quot;./OneTwoThree&quot;;
-
-console.log(num); // &quot;123&quot;
-</code></pre><p>导入：import</p>
-<pre><code>import { ZipCodeValidator } from &quot;./ZipCodeValidator&quot;;
-
-let myValidator = new ZipCodeValidator();   
-</code></pre><h2 id="2016-9-24"><a href="#2016-9-24" class="headerlink" title="2016.9.24"></a>2016.9.24</h2><p>函数</p>
-<pre><code>JS函数
-
-// Named function
-function add(x, y) {
-    return x + y;
-}
-
-// Anonymous function
-let myAdd = function(x, y) { return x + y; };
-</code></pre><p>稍稍加一点类型 </p>
-<pre><code>function add(x: number, y: number): number {
-    return x + y;
-}
-
-let myAdd = function(x: number, y: number): number { return x+y; };
-</code></pre><p>再改下，用时尚的箭头函数</p>
-<pre><code>let myAdd: (x:number, y:number)=&gt;number =
-    function(x: number, y: number): number { return x+y; };
-
-=&gt;左边：参数; 右边：返回值
-</code></pre><p>可选参数和默认参数:</p>
-<pre><code>传递给一个函数的参数个数必须与函数期望的参数个数一致。
-
-    function buildName(firstName: string, lastName: string) {
-    return firstName + &quot; &quot; + lastName;
- }
-
-    let result1 = buildName(&quot;Bob&quot;);                  // error, too few parameters
-    let result2 = buildName(&quot;Bob&quot;, &quot;Adams&quot;, &quot;Sr.&quot;);  // error, too many parameters
-    let result3 = buildName(&quot;Bob&quot;, &quot;Adams&quot;);         // ah, just right
-
-可选参数：加&quot;?&quot;即可，跟接口的可选属性一样.PS:可选参数必须跟在必须参数后面
-
-    function buildName(firstName: string, lastName?: string) {
-   ...
-}
-
-如果带默认值的参数出现在必须参数前面，用户必须明确的传入 undefined值来获得默认值。
-    function buildName(firstName = &quot;Will&quot;, lastName: string) {
-        return firstName + &quot; &quot; + lastName;
-}
-    let result4 = buildName(undefined, &quot;Adams&quot;);     // okay and returns &quot;Will Adams&quot;
-</code></pre><p>关于this</p>
-<pre><code>JavaScript里，this的值在函数被调用的时候才会指定。 
-
-然而，箭头函数能保存函数创建时的 this值，而不是调用时的值。( lambda表达式 () =&gt; {}   )
-
-也就是说，在箭头函数中,可以理解为 var _this = this;然后把this替换成_this
-</code></pre><h2 id="2016-9-23"><a href="#2016-9-23" class="headerlink" title="2016.9.23"></a>2016.9.23</h2><p>类(完全就是照抄C++的)</p>
-<p>关键词class</p>
-<p>eg:</p>
-<pre><code>class Greeter {
-    greeting: string;
-    constructor(message: string) {
-        this.greeting = message;
-    }
-    greet() {
-        return &quot;Hello, &quot; + this.greeting;
-    }
-}
-</code></pre><p>继承：<br>关键词extends</p>
-<p>eg:</p>
-<pre><code>class Animal {
-    name:string;
-    constructor(theName: string) { this.name = theName; }
-    move(distanceInMeters: number = 0) {
-        console.log(`${this.name} moved ${distanceInMeters}m.`);
-    }
-}
-
-class Snake extends Animal {
-    constructor(name: string) { super(name); }
-    move(distanceInMeters = 5) {
-        console.log(&quot;Slithering...&quot;);
-        super.move(distanceInMeters);
-    }
-}
-</code></pre><p>Snake类是基类Animal的子类，并且可以访问其属性和方法。</p>
-<p>包含constructor函数的派生类必须调用super()，它会执行基类的构造方法。(有点像this)</p>
-<p>子类里可以重写父类的方法。Snake重写了从Animal继承来的move方法</p>
-<hr>
-<p>修饰符:public(默认);private;protected;</p>
-<ol>
-<li><p>public:没啥，很正常;</p>
-</li>
-<li><p>private:不能在声明它的类的外部访问</p>
-</li>
-</ol>
-<p>eg:</p>
-<pre><code>class Animal {
-    private name: string;
-    constructor(theName: string) { this.name = theName; }
-}
-
-new Animal(&quot;Cat&quot;).name; // Error: &apos;name&apos; is private;
-</code></pre><p>3.protected与private很相似，但有一点不同，protected成员在派生类中仍然可以访问。</p>
-<h2 id="2016-9-21"><a href="#2016-9-21" class="headerlink" title="2016.9.21"></a>2016.9.21</h2><p>接口(2)</p>
-<p>索引</p>
-<pre><code>interface StringArray {
-  [index: number]: string;
-}
-
-let myArray: StringArray;
-myArray = [&quot;Bob&quot;, &quot;Fred&quot;];
-
-let myStr: string = myArray[0];
-</code></pre><p>这个索引签名表示了当用 number去索引StringArray时会得到string类型的返回值。</p>
-<p>只能用字符串和数字来索引</p>
-<p> 使用 number来索引时，会把它转换成string然后再去索引对象。 也就是说用 0（number）去索引等同于使用”0”（string）去索引</p>
-<hr>
-<p> 实现接口</p>
-<p> implements关键字</p>
-<pre><code> interface ClockInterface {
-    currentTime: Date;
-}
-
-class Clock implements ClockInterface {
-    currentTime: Date;
-    constructor(h: number, m: number) { }
-}
-</code></pre><p>扩展接口：从一个接口里复制成员到另一个接口里<br>    interface Shape {<br>        color: string;<br>    }</p>
-<pre><code>interface Square extends Shape {
-    sideLength: number;
-}
-
-let square = &lt;Square&gt;{};
-square.color = &quot;blue&quot;;
-square.sideLength = 10;
-</code></pre><p>PS:创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现</p>
-<h2 id="2016-9-20"><a href="#2016-9-20" class="headerlink" title="2016.9.20 "></a>2016.9.20 </h2><p>接口(1) (好像有点难啊，不知道到时候还会不会这么想)</p>
-<p>  用interface定义   interface+接口名 {属性1；属性2；}</p>
-<p>  eg: </p>
-<pre><code>interface LabelledValue {
-    label: string;
-}
-</code></pre><p>label: string –必选属性</p>
-<p>还有：</p>
-<p>label?: string –可选属性(在属性名后加问号） —-不是很清楚这玩意到底干嘛的，文档没看懂<br>readonly label: string –只读属性(在属性名前加 readonly)  只能在对象刚刚创建的时候修改其值</p>
-<p>eg：</p>
-<pre><code>interface Point {
-    readonly x: number;
-    readonly y: number;
-}
-let p1: Point = { x: 10, y: 20 };
-p1.x = 5; // error!x,y不能再改变
-</code></pre><p> 乱七八糟的：接口的属性检查(乱死了，真的不是很懂这玩意，只能照搬文档代码了)</p>
-<pre><code> interface SquareConfig {
-    color?: string;
-    width?: number;
-}
-
-function createSquare(config: SquareConfig): { color: string; area: number } {
-    // ...
-}
-
-let mySquare = createSquare({ colour: &quot;red&quot;, width: 100 });//这里的colour跟color是不一样，然后就有error: &apos;colour&apos; not expected in type &apos;SquareConfig&apos;
-</code></pre><p>绕开的方法：</p>
-<pre><code>1.类型断言 let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
-2.添加一个字符串索引签名 如果 SquareConfig带有上面定义的类型的color和width属性，并且还会带有任意数量的其它属性，那么我们可以这样定义它
-   interface SquareConfig {
-    color?: string;
-    width?: number;
-    [propName: string]: any;
-    }
-3.将这个对象赋值给一个另一个变量： 因为 squareOptions不会经过额外属性检查，所以编译器不会报错。
-let squareOptions = { colour: &quot;red&quot;, width: 100 };
-let mySquare = createSquare(squareOptions);
-</code></pre><p>   接口描述函数类型</p>
-<pre><code>interface SearchFunc {
- (source: string, subString: string): boolean;  //给接口定义一个调用签名
- }
-let mySearch: SearchFunc;
- mySearch = function(source: string, subString: string) {
-     let result = source.search(subString);
-     if (result == -1) {
-         return false;
-     }
-     else {
-         return true;
-     }
- }
-</code></pre><h2 id="2016-9-19"><a href="#2016-9-19" class="headerlink" title="2016.9.19"></a>2016.9.19</h2><p> ####数据类型</p>
-<pre><code>1. 数字 a: number = 1;
-2. 布尔 a: boolean = false；
-3. 字符串 a: string =&quot;Mulgore&quot;;
-    模板字符串 定义多行文本和内嵌表达式，以${ xxx }插入表达式,外面用反引号包裹  a: string =`my name is ${ name }`
-4. 数组 a：Array&lt;number&gt; =[1,2,3]   or
-        a: number[] =[1,2,3];
-5. 元组 a: [number,string] = [1,Mulgore];
-6. 枚举 enum Color {Red, Green, Blue};
-    eg:&lt;/br&gt;
-    enum Color {Red = 1, Green = 2, Blue = 4}; let c: Color = Color.Green; alert(c)  //2
-7. 任意值 a: any = 4;
-直接让它们通过编译阶段的检查
-8. 空值 let a: void = undefined; //a:void只能赋值undefined或null;
-9. undefined和null   基本没用 a:undefined = undefined
-</code></pre><p>或许是我们要的代码块——变量声明方式</p>
-<pre><code>1. var 
-
-    不是块级作用域，只有函数作用域;
-    eg:
-        function f() {
-            var a = 10;
-            return function g() {
-                var b = a + 1;
-                return b;
-            }
-        }
-         var g = f();
-        g(); // returns 11;因为g()能访问到a值
-------------------------
-   用var 多次声明同一个变量并不会报错
-
-
-2. let
-
-    词法作用域或块作用域  
-    块作用域变量在包含它们的块或for循环之外是不能访问的
-    eg:
-   function f(input: boolean) {
-    let a = 100;
-     if (input) {
-        let b = a + 1;
-        return b;
-    }
-    return b;  //Error
-}
-
-    let多次声明会报错
-    eg:
-   function f(x) {
-    let x = 100; // error
-}
-
-3. const
-
-    被赋值后不能再改变
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2260,7 +2034,7 @@ let mySearch: SearchFunc;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
