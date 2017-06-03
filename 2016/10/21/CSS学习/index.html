@@ -62,7 +62,7 @@
 
 
 
-<meta name="description" content="on 2016.10.21某人blog中看到的
+<meta name="description" content="1某人blog中看到的
 css:
 p:first-letter {
         color: red;
@@ -74,12 +74,12 @@ p &amp;gt; span {
 html:
 &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
 
-结果“第”字是红色::first-le">
+结果“第”字是红色::first-letter伪元素其实是作为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS学习">
 <meta property="og:url" content="http://yoursite.com/2016/10/21/CSS学习/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
-<meta property="og:description" content="on 2016.10.21某人blog中看到的
+<meta property="og:description" content="1某人blog中看到的
 css:
 p:first-letter {
         color: red;
@@ -91,11 +91,11 @@ p &amp;gt; span {
 html:
 &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
 
-结果“第”字是红色::first-le">
-<meta property="og:updated_time" content="2017-04-17T05:50:32.000Z">
+结果“第”字是红色::first-letter伪元素其实是作为">
+<meta property="og:updated_time" content="2017-05-21T15:39:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS学习">
-<meta name="twitter:description" content="on 2016.10.21某人blog中看到的
+<meta name="twitter:description" content="1某人blog中看到的
 css:
 p:first-letter {
         color: red;
@@ -107,7 +107,7 @@ p &amp;gt; span {
 html:
 &amp;lt;p&amp;gt;&amp;lt;span&amp;gt;第一个&amp;lt;/span&amp;gt;字符看看会不会变红？&amp;lt;/p&amp;gt;
 
-结果“第”字是红色::first-le">
+结果“第”字是红色::first-letter伪元素其实是作为">
 
 
 
@@ -292,7 +292,7 @@ html:
       
 
       
-        <h2 id="on-2016-10-21"><a href="#on-2016-10-21" class="headerlink" title="on 2016.10.21"></a>on 2016.10.21</h2><p>某人blog中看到的</p>
+        <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>某人blog中看到的</p>
 <pre><code>css:
 p:first-letter {
         color: red;
@@ -306,14 +306,21 @@ html:
 </code></pre><blockquote>
 <p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
 </blockquote>
-<h2 id="on-2016-11-11"><a href="#on-2016-11-11" class="headerlink" title="on 2016.11.11"></a>on 2016.11.11</h2><p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
 <pre><code>css:
 border: 10px solid hsla(0,0%,100%,.5);
 background: white; 
 background-clip: padding-box;      
-</code></pre><h2 id="on-2016-11-11-1"><a href="#on-2016-11-11-1" class="headerlink" title="on 2016.11.11"></a>on 2016.11.11</h2><p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
+</code></pre><h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
 <p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
-
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>创建长宽比固定的元素</p>
+<p>通过设置父级窗口的padding-bottom可以达到让容器保持一定的长度比的目的，这在响应式页面设计中比较有用，能够保持元素不变形</p>
+<pre><code>&lt;div style=&quot;width: 100%; position: relative; padding-bottom: 20%;&quot;&gt;
+    &lt;div style=&quot;position: absolute; left: 0; top: 0; right: 0; bottom: 0;background-color:yellow;&quot;&gt;
+        this content will have a constant aspect ratio that varies based on the width.
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
       
     </div>
 
@@ -418,7 +425,7 @@ background-clip: padding-box;
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpeg"
+               src="/uploads/avatar.JPG"
                alt="Mulgure" />
           <p class="site-author-name" itemprop="name">Mulgure</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -426,7 +433,7 @@ background-clip: padding-box;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -485,7 +492,7 @@ background-clip: padding-box;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#on-2016-10-21"><span class="nav-number">1.</span> <span class="nav-text">on 2016.10.21</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#on-2016-11-11"><span class="nav-number">2.</span> <span class="nav-text">on 2016.11.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#on-2016-11-11-1"><span class="nav-number">3.</span> <span class="nav-text">on 2016.11.11</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">4</span></a></li></ol></div>
             
           </div>
         </section>

@@ -62,12 +62,46 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mulgure的小屋">
-<meta property="og:url" content="http://yoursite.com/tags/杂感/index.html">
+<meta name="description" content="今天群里面有人提出了这么一个问题 
+function fn1(){
+    console.log(1);
+}
+function fn2(){
+    console.log(2);
+}
+fn1.call(fn2); //1
+fn1.call.call(fn2); //2
+fn1.call.call.call.call.call(fn2); //2
+Function.prototype.call(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="call()的深入问题探究">
+<meta property="og:url" content="http://yoursite.com/2017/05/26/js call的深入问题探究/index.html">
 <meta property="og:site_name" content="Mulgure的小屋">
+<meta property="og:description" content="今天群里面有人提出了这么一个问题 
+function fn1(){
+    console.log(1);
+}
+function fn2(){
+    console.log(2);
+}
+fn1.call(fn2); //1
+fn1.call.call(fn2); //2
+fn1.call.call.call.call.call(fn2); //2
+Function.prototype.call(">
+<meta property="og:updated_time" content="2017-05-25T17:02:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mulgure的小屋">
+<meta name="twitter:title" content="call()的深入问题探究">
+<meta name="twitter:description" content="今天群里面有人提出了这么一个问题 
+function fn1(){
+    console.log(1);
+}
+function fn2(){
+    console.log(2);
+}
+fn1.call(fn2); //1
+fn1.call.call(fn2); //2
+fn1.call.call.call.call.call(fn2); //2
+Function.prototype.call(">
 
 
 
@@ -88,10 +122,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/杂感/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/26/js call的深入问题探究/"/>
 
 
-  <title> 标签: 杂感 | Mulgure的小屋 </title>
+  <title> call()的深入问题探究 | Mulgure的小屋 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -112,7 +146,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -184,102 +218,148 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        杂感
-        <small>标签</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/18/我的围棋时光/" itemprop="url">
-              
-                <span itemprop="name">我的围棋时光</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-18T19:53:59+08:00"
-              content="2017-02-18" >
-          02-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/05/小flag/" itemprop="url">
-              
-                <span itemprop="name">小flag</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-05T18:51:11+08:00"
-              content="2016-11-05" >
-          11-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/21/myName/" itemprop="url">
-              
-                <span itemprop="name">关于名字的黑历史</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-21T17:43:10+08:00"
-              content="2016-10-21" >
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                call()的深入问题探究
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-26T00:43:51+08:00" content="2017-05-26">
+              2017-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/26/js call的深入问题探究/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/26/js call的深入问题探究/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天群里面有人提出了这么一个问题 </p>
+<pre><code>function fn1(){
+    console.log(1);
+}
+function fn2(){
+    console.log(2);
+}
+fn1.call(fn2); //1
+fn1.call.call(fn2); //2
+fn1.call.call.call.call.call(fn2); //2
+Function.prototype.call(fn2); //undefined
+Function.prototype.call.call(fn2); //2
+</code></pre><p>要解释这个问题 不如先看看 Function.prototype.call 的输出</p>
+<pre><code>Function.prototype.call //function call() { [native code] }
+</code></pre><p>然后是call()的内部实现 到网上找了一下 是这么说的</p>
+<pre><code>call的工作流程 
+F.call(thisarg,[arg1……]) 
+1、先判断F是否为一个函数，如果不是一个函数，那么将抛出TypeError异常。 
+2、创建一个内部类型空列表list 
+3、然后如果参数除去thisarg外还有其他参数的话，就将这些值添加到list中 
+4、Iangthisarg和list作为F内部属性[[Call]]的参数传入调用进行函数的执行操作
+</code></pre><p>  [[Call]] 参数我们猜应该是（要调用的函数，要调用的函数的this，要调用的函数的参数）</p>
+<p>这就很好解释上述结果了 以 Function.prototype.call.call(fn2) 为例</p>
+<p>后一个call(fn2)将一个参数fn2作为 要调用的函数 传入了前一个call的内部实现参数中</p>
+<p>然后在外部看来 就变成了fn2.call() </p>
+<p>以上</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/17/nodejs学习笔记/" rel="next" title="nodejs学习笔记">
+                <i class="fa fa-chevron-left"></i> nodejs学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -287,6 +367,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/26/js call的深入问题探究/"
+           data-title="call()的深入问题探究" data-url="http://yoursite.com/2017/05/26/js call的深入问题探究/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -306,8 +394,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.JPG"
@@ -370,6 +467,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -473,6 +581,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
 
   
 

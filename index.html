@@ -208,6 +208,132 @@
             
               
                 
+                <a class="post-title-link" href="/2017/05/26/js call的深入问题探究/" itemprop="url">
+                  call()的深入问题探究
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-26T00:43:51+08:00" content="2017-05-26">
+              2017-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/26/js call的深入问题探究/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/26/js call的深入问题探究/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天群里面有人提出了这么一个问题 </p>
+<pre><code>function fn1(){
+    console.log(1);
+}
+function fn2(){
+    console.log(2);
+}
+fn1.call(fn2); //1
+fn1.call.call(fn2); //2
+fn1.call.call.call.call.call(fn2); //2
+Function.prototype.call(fn2); //undefined
+Function.prototype.call.call(fn2); //2
+</code></pre><p>要解释这个问题 不如先看看 Function.prototype.call 的输出</p>
+<pre><code>Function.prototype.call //function call() { [native code] }
+</code></pre><p>然后是call()的内部实现 到网上找了一下 是这么说的</p>
+<pre><code>call的工作流程 
+F.call(thisarg,[arg1……]) 
+1、先判断F是否为一个函数，如果不是一个函数，那么将抛出TypeError异常。 
+2、创建一个内部类型空列表list 
+3、然后如果参数除去thisarg外还有其他参数的话，就将这些值添加到list中 
+4、Iangthisarg和list作为F内部属性[[Call]]的参数传入调用进行函数的执行操作
+</code></pre><p>  [[Call]] 参数我们猜应该是（要调用的函数，要调用的函数的this，要调用的函数的参数）</p>
+<p>这就很好解释上述结果了 以 Function.prototype.call.call(fn2) 为例</p>
+<p>后一个call(fn2)将一个参数fn2作为 要调用的函数 传入了前一个call的内部实现参数中</p>
+<p>然后在外部看来 就变成了fn2.call() </p>
+<p>以上</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/05/17/nodejs学习笔记/" itemprop="url">
                   nodejs学习笔记
                 </a>
@@ -262,7 +388,7 @@
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习资料根据<a href="http://nodejs.cn/api/assert.html" target="_blank" rel="external">Node.js中文网</a> </p>
 <p>主要是归纳总结相同点 不会照抄太多API</p>
 <h1 id="Assert-断言"><a href="#Assert-断言" class="headerlink" title="Assert(断言)"></a>Assert(断言)</h1><pre><code>头部：const assert = require(&apos;assert&apos;);
-</code></pre><h3 id="assert-与-assert-ok"><a href="#assert-与-assert-ok" class="headerlink" title="assert( )与 assert.ok( )"></a>assert( )与 assert.ok( )</h3><p>参数均为 value&lt;any\&gt;[, message&lt;any\&gt;]</p>
+</code></pre><h3 id="assert-与-assert-ok"><a href="#assert-与-assert-ok" class="headerlink" title="assert( )与 assert.ok( )"></a>assert( )与 assert.ok( )</h3><p>参数均为 value&lt;any&gt;[, message&lt;any&gt;]</p>
 <p>两者相同 </p>
 <p>如果 value 不为真值，则抛出一个带有 message 属性的 AssertionError，其中 message 属性的值等于传入的 message 参数的值。 如果 message 参数为 undefined，则赋予默认的错误信息。</p>
 <pre><code>const assert = require(&apos;assert&apos;);
@@ -270,7 +396,7 @@ assert.ok(1);
 // 通过
 assert.ok(false);
 // 抛出 &quot;AssertionError: false == true&quot;
-</code></pre><h3 id="assert-ifError"><a href="#assert-ifError" class="headerlink" title="assert.ifError( )"></a>assert.ifError( )</h3><p>参数为value&lt;any\&gt;</p>
+</code></pre><h3 id="assert-ifError"><a href="#assert-ifError" class="headerlink" title="assert.ifError( )"></a>assert.ifError( )</h3><p>参数为value&lt;any&gt;</p>
 <p>如果 value 为真，则抛出 value。</p>
 <h3 id="assert-fail"><a href="#assert-fail" class="headerlink" title="assert.fail( )"></a>assert.fail( )</h3><p>参数为actual&lt;any&gt;, expected&lt;any&gt;, message&lt;any&gt;, operator&lt;String&gt;</p>
 <p>抛出 AssertionError。 如果 message 不存在，则错误信息会被设为 actual 的值加分隔符 operator 再加 expected 的值。 否则，错误信息为 message 的值。</p>
@@ -1840,128 +1966,9 @@ arr[fatherName] = Father
     console.log(x, y) // 2 3
 }
 setTimeout(a, 1000, 2, 3)
+</code></pre><h2 id="Set用于数组去重"><a href="#Set用于数组去重" class="headerlink" title="Set用于数组去重"></a>Set用于数组去重</h2><p>Set 结构不会添加重复的值 故可用此方法进行数组去重</p>
+<pre><code>[...new Set(array)]
 </code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/21/CSS学习/" itemprop="url">
-                  CSS学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T10:37:49+08:00" content="2016-10-21">
-              2016-10-21
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/10/21/CSS学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/CSS学习/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="on-2016-10-21"><a href="#on-2016-10-21" class="headerlink" title="on 2016.10.21"></a>on 2016.10.21</h2><p>某人blog中看到的</p>
-<pre><code>css:
-p:first-letter {
-        color: red;
-}
-p &gt; span {
-        color: blue!important;
-}
-
-html:
-&lt;p&gt;&lt;span&gt;第一个&lt;/span&gt;字符看看会不会变红？&lt;/p&gt;
-</code></pre><blockquote>
-<p>结果“第”字是红色<br>::first-letter伪元素其实是作为子元素存在的，或者说应当看成是子元素，于是，就很好理解了，对于类似color这样的继承属性，子元素的CSS设置一定比父元素的级别要高，哪怕父级使用了重量级的!important，因为子元素会先继承，然后再应用自身设置。</p>
-</blockquote>
-<h2 id="on-2016-11-11"><a href="#on-2016-11-11" class="headerlink" title="on 2016.11.11"></a>on 2016.11.11</h2><p>div 不希望背景侵入边框所在范围 可以设置background-clip的值为padding-box 这样浏览器就会用内边距的外沿把背景剪裁掉</p>
-<pre><code>css:
-border: 10px solid hsla(0,0%,100%,.5);
-background: white; 
-background-clip: padding-box;      
-</code></pre><h2 id="on-2016-11-11-1"><a href="#on-2016-11-11-1" class="headerlink" title="on 2016.11.11"></a>on 2016.11.11</h2><p>在background简写属性中指定background-size时 需要同时提供一个background-position值(哪怕它的值就是初始值也需要写出来) 而且要用一个斜杠“/”作为分割</p>
-<p>原因：消除歧义 你写个(50% 50%) 鬼知道是size还是position </p>
-
           
         
       
@@ -2026,7 +2033,7 @@ background-clip: padding-box;
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpeg"
+               src="/uploads/avatar.JPG"
                alt="Mulgure" />
           <p class="site-author-name" itemprop="name">Mulgure</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -2034,7 +2041,7 @@ background-clip: padding-box;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

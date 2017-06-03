@@ -65,9 +65,9 @@
 <meta name="description" content="前言学习资料根据Node.js中文网 
 主要是归纳总结相同点 不会照抄太多API
 Assert(断言)头部：const assert = require(&amp;apos;assert&amp;apos;);
-assert( )与 assert.ok( )参数均为 value&amp;lt;any\&amp;gt;[, message&amp;lt;any\&amp;gt;]
+assert( )与 assert.ok( )参数均为 value&amp;lt;any&amp;gt;[, message&amp;lt;any&amp;gt;]
 两者相同 
-如果 value 不为真值，则抛出一个带有 mess">
+如果 value 不为真值，则抛出一个带有 messag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/05/17/nodejs学习笔记/index.html">
@@ -75,18 +75,18 @@ assert( )与 assert.ok( )参数均为 value&amp;lt;any\&amp;gt;[, message&amp;lt
 <meta property="og:description" content="前言学习资料根据Node.js中文网 
 主要是归纳总结相同点 不会照抄太多API
 Assert(断言)头部：const assert = require(&amp;apos;assert&amp;apos;);
-assert( )与 assert.ok( )参数均为 value&amp;lt;any\&amp;gt;[, message&amp;lt;any\&amp;gt;]
+assert( )与 assert.ok( )参数均为 value&amp;lt;any&amp;gt;[, message&amp;lt;any&amp;gt;]
 两者相同 
-如果 value 不为真值，则抛出一个带有 mess">
-<meta property="og:updated_time" content="2017-05-19T07:18:30.000Z">
+如果 value 不为真值，则抛出一个带有 messag">
+<meta property="og:updated_time" content="2017-05-19T07:23:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs学习笔记">
 <meta name="twitter:description" content="前言学习资料根据Node.js中文网 
 主要是归纳总结相同点 不会照抄太多API
 Assert(断言)头部：const assert = require(&amp;apos;assert&amp;apos;);
-assert( )与 assert.ok( )参数均为 value&amp;lt;any\&amp;gt;[, message&amp;lt;any\&amp;gt;]
+assert( )与 assert.ok( )参数均为 value&amp;lt;any&amp;gt;[, message&amp;lt;any&amp;gt;]
 两者相同 
-如果 value 不为真值，则抛出一个带有 mess">
+如果 value 不为真值，则抛出一个带有 messag">
 
 
 
@@ -274,7 +274,7 @@ assert( )与 assert.ok( )参数均为 value&amp;lt;any\&amp;gt;[, message&amp;lt
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学习资料根据<a href="http://nodejs.cn/api/assert.html" target="_blank" rel="external">Node.js中文网</a> </p>
 <p>主要是归纳总结相同点 不会照抄太多API</p>
 <h1 id="Assert-断言"><a href="#Assert-断言" class="headerlink" title="Assert(断言)"></a>Assert(断言)</h1><pre><code>头部：const assert = require(&apos;assert&apos;);
-</code></pre><h3 id="assert-与-assert-ok"><a href="#assert-与-assert-ok" class="headerlink" title="assert( )与 assert.ok( )"></a>assert( )与 assert.ok( )</h3><p>参数均为 value&lt;any\&gt;[, message&lt;any\&gt;]</p>
+</code></pre><h3 id="assert-与-assert-ok"><a href="#assert-与-assert-ok" class="headerlink" title="assert( )与 assert.ok( )"></a>assert( )与 assert.ok( )</h3><p>参数均为 value&lt;any&gt;[, message&lt;any&gt;]</p>
 <p>两者相同 </p>
 <p>如果 value 不为真值，则抛出一个带有 message 属性的 AssertionError，其中 message 属性的值等于传入的 message 参数的值。 如果 message 参数为 undefined，则赋予默认的错误信息。</p>
 <pre><code>const assert = require(&apos;assert&apos;);
@@ -282,7 +282,7 @@ assert.ok(1);
 // 通过
 assert.ok(false);
 // 抛出 &quot;AssertionError: false == true&quot;
-</code></pre><h3 id="assert-ifError"><a href="#assert-ifError" class="headerlink" title="assert.ifError( )"></a>assert.ifError( )</h3><p>参数为value&lt;any\&gt;</p>
+</code></pre><h3 id="assert-ifError"><a href="#assert-ifError" class="headerlink" title="assert.ifError( )"></a>assert.ifError( )</h3><p>参数为value&lt;any&gt;</p>
 <p>如果 value 为真，则抛出 value。</p>
 <h3 id="assert-fail"><a href="#assert-fail" class="headerlink" title="assert.fail( )"></a>assert.fail( )</h3><p>参数为actual&lt;any&gt;, expected&lt;any&gt;, message&lt;any&gt;, operator&lt;String&gt;</p>
 <p>抛出 AssertionError。 如果 message 不存在，则错误信息会被设为 actual 的值加分隔符 operator 再加 expected 的值。 否则，错误信息为 message 的值。</p>
@@ -350,6 +350,10 @@ const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/05/26/js call的深入问题探究/" rel="prev" title="call()的深入问题探究">
+                call()的深入问题探究 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -412,7 +416,7 @@ const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpeg"
+               src="/uploads/avatar.JPG"
                alt="Mulgure" />
           <p class="site-author-name" itemprop="name">Mulgure</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -420,7 +424,7 @@ const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
