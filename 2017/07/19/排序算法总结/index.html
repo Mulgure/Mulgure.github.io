@@ -1,0 +1,621 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="本文主要是对阮一峰老师文章排序算法的补充与总结课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可希尔排序希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法总结">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/排序算法总结/index.html">
+<meta property="og:site_name" content="Mulgure的小屋">
+<meta property="og:description" content="本文主要是对阮一峰老师文章排序算法的补充与总结课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可希尔排序希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组">
+<meta property="og:updated_time" content="2017-07-19T14:02:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法总结">
+<meta name="twitter:description" content="本文主要是对阮一峰老师文章排序算法的补充与总结课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可希尔排序希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/19/排序算法总结/"/>
+
+
+  <title> 排序算法总结 | Mulgure的小屋 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mulgure的小屋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">执念不灭 我就永不消亡</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                排序算法总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-19T21:36:58+08:00" content="2017-07-19">
+              2017-07-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/19/排序算法总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/19/排序算法总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="本文主要是对阮一峰老师文章排序算法的补充与总结"><a href="#本文主要是对阮一峰老师文章排序算法的补充与总结" class="headerlink" title="本文主要是对阮一峰老师文章排序算法的补充与总结"></a>本文主要是对阮一峰老师文章<a href="http://javascript.ruanyifeng.com/library/sorting.html#toc6" target="_blank" rel="external">排序算法</a>的补充与总结</h3><h3 id="课本上常见的排序算法有冒泡排序-选择排序-插入排序-合并排序-快速排序-希尔排序-前五种排序方法的算法与函数见上文即可"><a href="#课本上常见的排序算法有冒泡排序-选择排序-插入排序-合并排序-快速排序-希尔排序-前五种排序方法的算法与函数见上文即可" class="headerlink" title="课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可"></a>课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可</h3><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><h3 id="希尔排序是插入排序的一种-它是针对直接插入排序算法的改进-该方法又称缩小增量排序"><a href="#希尔排序是插入排序的一种-它是针对直接插入排序算法的改进-该方法又称缩小增量排序" class="headerlink" title="希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序"></a>希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序</h3><h3 id="对于n个待排序的数列-取一个小于n的整数gap-gap被称为步长-将待排序元素分成若干个组子序列-所有距离为gap的倍数的记录放在同一个组中-对各组内的元素进行直接插入排序-这一趟排序完成之后-每一个组的元素都是有序的-然后减小gap的值-并重复执行上述的分组和排序-重复这样的操作-当gap-1时-即所有记录放在同一组中进行直接插入排序为止-整个数列就是有序的"><a href="#对于n个待排序的数列-取一个小于n的整数gap-gap被称为步长-将待排序元素分成若干个组子序列-所有距离为gap的倍数的记录放在同一个组中-对各组内的元素进行直接插入排序-这一趟排序完成之后-每一个组的元素都是有序的-然后减小gap的值-并重复执行上述的分组和排序-重复这样的操作-当gap-1时-即所有记录放在同一组中进行直接插入排序为止-整个数列就是有序的" class="headerlink" title="对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组内的元素进行直接插入排序 这一趟排序完成之后 每一个组的元素都是有序的 然后减小gap的值 并重复执行上述的分组和排序 重复这样的操作 当gap=1时 即所有记录放在同一组中进行直接插入排序为止 整个数列就是有序的"></a>对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组内的元素进行直接插入排序 这一趟排序完成之后 每一个组的元素都是有序的 然后减小gap的值 并重复执行上述的分组和排序 重复这样的操作 当gap=1时 即所有记录放在同一组中进行直接插入排序为止 整个数列就是有序的</h3><h3 id="希尔排序实质上是一种分组插入方法"><a href="#希尔排序实质上是一种分组插入方法" class="headerlink" title="希尔排序实质上是一种分组插入方法"></a>希尔排序实质上是一种分组插入方法</h3><h3 id="下面是具体代码"><a href="#下面是具体代码" class="headerlink" title="下面是具体代码"></a>下面是具体代码</h3><pre><code>function shellSort(myArray){
+    var gaps=[5,3,1];
+    var res=[];
+    for(var g=0;g&lt;gaps.length;g++){
+        for(var i=gaps[g];i&lt;myArray.length;i++){
+            var temp=myArray[i];
+            for(var j=i;j&gt;=gaps[g]&amp;&amp;myArray[j-gaps[g]]&gt;temp;j-=gaps[g]){
+                myArray[j]=myArray[j-gaps[g]];
+            }
+            myArray[j]=temp;          
+        }      
+    }  
+    console.log(myArray)  
+}
+var myArray=[6,0,2,9,3,5,8,0,5,4];
+shellSort(myArray);
+</code></pre><h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><pre><code>冒泡排序：O(n^2) 稳定
+
+选择排序：O(n^2) 稳定
+
+插入排序：平均O(n*log2n) 最差O(n^2) 不稳定
+
+合并排序 O(n*logn) 稳定
+
+快速排序 平均O(n*log2n) 最差O(n^2) 不稳定
+
+希尔排序情况较复杂 与间隔序列有关
+</code></pre><h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><pre><code>冒泡排序：O(1)
+
+选择排序：O(1)
+
+插入排序：O(1)
+
+合并排序 O(n)
+
+快速排序 O(logn)
+
+希尔排序 O(1)
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/26/js call的深入问题探究/" rel="next" title="call()的深入问题探究">
+                <i class="fa fa-chevron-left"></i> call()的深入问题探究
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/19/排序算法总结/"
+           data-title="排序算法总结" data-url="http://yoursite.com/2017/07/19/排序算法总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.JPG"
+               alt="Mulgure" />
+          <p class="site-author-name" itemprop="name">Mulgure</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Mulgure" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/qin-si-liang-65" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#本文主要是对阮一峰老师文章排序算法的补充与总结"><span class="nav-number">1.</span> <span class="nav-text">本文主要是对阮一峰老师文章排序算法的补充与总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课本上常见的排序算法有冒泡排序-选择排序-插入排序-合并排序-快速排序-希尔排序-前五种排序方法的算法与函数见上文即可"><span class="nav-number">2.</span> <span class="nav-text">课本上常见的排序算法有冒泡排序 选择排序 插入排序 合并排序 快速排序 希尔排序 前五种排序方法的算法与函数见上文即可</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序"><span class="nav-number"></span> <span class="nav-text">希尔排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序是插入排序的一种-它是针对直接插入排序算法的改进-该方法又称缩小增量排序"><span class="nav-number">1.</span> <span class="nav-text">希尔排序是插入排序的一种 它是针对直接插入排序算法的改进 该方法又称缩小增量排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对于n个待排序的数列-取一个小于n的整数gap-gap被称为步长-将待排序元素分成若干个组子序列-所有距离为gap的倍数的记录放在同一个组中-对各组内的元素进行直接插入排序-这一趟排序完成之后-每一个组的元素都是有序的-然后减小gap的值-并重复执行上述的分组和排序-重复这样的操作-当gap-1时-即所有记录放在同一组中进行直接插入排序为止-整个数列就是有序的"><span class="nav-number">2.</span> <span class="nav-text">对于n个待排序的数列 取一个小于n的整数gap(gap被称为步长)将待排序元素分成若干个组子序列 所有距离为gap的倍数的记录放在同一个组中 对各组内的元素进行直接插入排序 这一趟排序完成之后 每一个组的元素都是有序的 然后减小gap的值 并重复执行上述的分组和排序 重复这样的操作 当gap=1时 即所有记录放在同一组中进行直接插入排序为止 整个数列就是有序的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序实质上是一种分组插入方法"><span class="nav-number">3.</span> <span class="nav-text">希尔排序实质上是一种分组插入方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面是具体代码"><span class="nav-number">4.</span> <span class="nav-text">下面是具体代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度"><span class="nav-number"></span> <span class="nav-text">时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度"><span class="nav-number"></span> <span class="nav-text">空间复杂度</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mulgure</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//lib.baomitu.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//lib.baomitu.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//lib.baomitu.com/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//lib.baomitu.com/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mulgure"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="//cdn.jsdelivr.net/ua-parser.js/0.7.10/ua-parser.min.js"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

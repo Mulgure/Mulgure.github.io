@@ -208,6 +208,254 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/21/JS学习/" itemprop="url">
+                  JS学习遇到的坑 (大坑慢慢填)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-21T17:42:58+08:00" content="2016-10-21">
+              2016-10-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/21/JS学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/JS学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>下面的内容都是想到哪写到哪 很零碎 基本上都是自己踩过的坑 供以后学习总结用</p>
+</blockquote>
+<h2 id="Jq的"><a href="#Jq的" class="headerlink" title="Jq的 "></a>Jq的 </h2><blockquote>
+<p>很懒不想上图</p>
+<p>某日从网上搜出来的全选框代码（JQ）</p>
+</blockquote>
+<pre><code>$(&quot;.all&quot;).click(function(){    
+   if(this.checked){    
+        $(&quot;table .checkbox&quot;).attr(&quot;checked&quot;, true) }
+    else{    
+        $(&quot;table .checkbox&quot;).attr(&quot;checked&quot;, false)
+    }   
+} );  
+</code></pre><blockquote>
+<p>HTML不贴了 大概意思都能看懂</p>
+<p>这玩意第一次全选还好, 但是如果取消了勾选状态后再次全选会失效。</p>
+<p>所以去查了下，发现JQ 1.9有提到。</p>
+<p>当选择器是用来区分标签属性（attributes）和对象属性（properties）时，这种行为在向后兼容的命名方面会引起混乱。</p>
+<p>例如，一个复选框的布尔标签属性（attributes），如checked和disabled受到这种变化的影响。”input[checked]“的正确行为是选择有checked属性的复选框，不管是它的字符串值，还是它当前的状态。与此相反， “input:checked” 选择当前checked属性的布尔值（true或false）为true的复选框，例如当用户单击复选框时，会受到影响。1.9之前版本这些选择器有时不选择正确的节点。<br>其中提到了一个1.6版本引入的prop()；语法差不多，区别如下<br>添加属性名称该属性就会生效应该使用prop();<br>有true,false两个属性使用prop();<br>其他则使用attr();</p>
+</blockquote>
+<h2 id="有关数的"><a href="#有关数的" class="headerlink" title="有关数的 "></a>有关数的 </h2><blockquote>
+<p>浮点数的算术运算是个大坑 不要用这浮点数这玩意作判断条件、</p>
+<p>比如说0.1+0.2!=0.3而是0.30000000000000004(舍入误差) 而0.25+0.05就没有这种事情发生，是正常的</p>
+<p>NaN(Not a Number) 与任何值都不相等，包括其本身</p>
+</blockquote>
+<h2 id="变量值的复制"><a href="#变量值的复制" class="headerlink" title="变量值的复制"></a>变量值的复制</h2><blockquote>
+<p>复制基本类型的值时，是按值传递</p>
+<p>负责引用类型的值时，是引用传递(指针)</p>
+<p>eg:</p>
+</blockquote>
+<pre><code>    var n1 = 5;
+    var n2 = n1;
+    var n1 = 6;
+    console.log(n2);   //5
+
+//另一种情况
+    var obj1 = {
+        name: &quot;myName&quot;
+    }
+    var obj2 = obj1;
+    obj1.name = &quot;myName2&quot;;
+    console.log(obj2.name);  //myName2
+</code></pre><h2 id="内容很散"><a href="#内容很散" class="headerlink" title="内容很散"></a>内容很散</h2><blockquote>
+<p>NaN==NaN //false;</p>
+<p>0==-0//true</p>
+<p>Symbol()==Symbol()//false<br>var a=”foo”;window.isNaN(a)  //true 算是JS的bug 所以 用ES6的Number.isNaN()来判断;</p>
+<p>引用复制 指向的是值本身而非变量 </p>
+<p>eg:</p>
+</blockquote>
+<pre><code>var a=[1,2,3];
+var b=a;
+a.push(4);
+console.log(b);//[1,2,3,4]
+
+var c=[1,2,3];
+var d=c;
+c=[1,2,3,4];
+console.log(d);//[1,2,3]
+</code></pre><blockquote>
+<p>原生函数当作构造函数来用 与设想有一定出入<br>eg:</p>
+</blockquote>
+<pre><code>var a=new Array(1,3,5);console.log(a);//[1,3,5]
+var b=[1,3,5];
+console.log(a==b);//false
+console.log(typeof(a));//object
+
+var x=new Boolean(false);
+var y=new Number(0);
+var z=new String(&quot;&quot;);
+console.log(Boolean(x&amp;&amp;y&amp;&amp;z));//true
+</code></pre><blockquote>
+<p>parseInt()如果没有第二个参数来指定转换的基数，便会根据字符串的第一个字符来自行决定基数 X或x：16进制;0:8进制</p>
+<p>然后有一个坑 </p>
+<p>parseInt(1/0,19);//18 原因：1/0转化为Infinity I值为18(A为10 然后就知道了吧) n无效 等同于parseInt(18,19)</p>
+<p>b=a-0会将a强制转化为数字 a*1或者a/1同理  b=a+””会将a强制转化为字符(串)</p>
+</blockquote>
+<h2 id="一个关于连等赋值的题"><a href="#一个关于连等赋值的题" class="headerlink" title="一个关于连等赋值的题 "></a>一个关于连等赋值的题 </h2><pre><code>var a = {n:1};
+a.x = a = {n:2};
+console.log(a.x);//undefined
+</code></pre><blockquote>
+<p>很是让人匪夷所思 这个涉及到赋值顺序和垃圾回收 有兴趣去搜索一下这个题目 算是抛砖引玉</p>
+</blockquote>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>JS大部分情况下 基于词法作用域<br>eg:</p>
+<pre><code>function foo(){
+    console.log(a);
+}
+function bar(){
+    var a=3;
+    foo();
+}
+var a=2;
+bar()   //2
+</code></pre><p>这一个例子就够了</p>
+<blockquote>
+<p>this跟上面说的不同 基于动态作用域 不过总会有一些“bug” 其实也不算bug 隐式丢失算一个</p>
+</blockquote>
+<pre><code>function foo(){
+    console.log(this.a);
+}
+
+var obj={
+    a:2,
+    foo:foo
+};
+
+var bar=obj.foo;    //隐式绑定
+var a=&quot;global&quot;;
+
+obj.foo()   //2(严格模式是undefined)
+bar();  //&quot;global&quot;
+</code></pre><h2 id="typeof与instanceof"><a href="#typeof与instanceof" class="headerlink" title="typeof与instanceof"></a>typeof与instanceof</h2><p>typeof的返回值:number,boolean,string,object,undefined,symbol,function<br>instanceof只能用来判断对象和函数，不能用来判断字符串和数字等;<br>注意：</p>
+<pre><code>var b = &apos;123&apos;;
+var c = new String(&quot;123&quot;);
+alert(b instanceof String);  //false
+alert(c instanceof String);  //true
+</code></pre><h2 id="object-Object"><a href="#object-Object" class="headerlink" title="[object Object]"></a>[object Object]</h2><pre><code>var a={a:1};
+alert(a);//[object Object]
+</code></pre><p>{} 相当于 new Object()， 定义一个对象的实例;<br>输出对象，默认返回[object objectname];</p>
+<ol>
+<li>因此，第一个是默认值object，第二个是对象的名字Object.</li>
+</ol>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in "></a>for-in </h2><p>for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。(似乎是跟浏览器有关 其实绝大部分情况还是按输入顺序输出的 旧式浏览器就难说了)</p>
+<p> for-in 不仅仅遍历 array 自身的属性，其还遍历 array 原型链上的所有可枚举的属性。</p>
+<p> eg:</p>
+<pre><code>Array.prototype.fatherName = &quot;Father&quot;;
+const arr = [1, 2, 3];
+arr.name = &quot;Hello world&quot;;
+let index;
+for(index in arr) {
+    console.log(&quot;arr[&quot; + index + &quot;] = &quot; + arr[index]);
+}
+</code></pre><p>结果:</p>
+<pre><code>arr[0] = 1
+arr[1] = 2
+arr[2] = 3
+arr[name] = Hello world
+arr[fatherName] = Father
+</code></pre><p>ps:for-in性能不佳 除非明确需要迭代一个属性数量未知的对象 否则应避免使用for-in</p>
+<h2 id="setTimeout-的参数"><a href="#setTimeout-的参数" class="headerlink" title="setTimeout()的参数"></a>setTimeout()的参数</h2><p>其实setTimeout()并不止两个参数 写完整是这样的 setTimeout(func, delay, param1, param2, …)</p>
+<p>第三个参数及以后的参数都可以作为func函数的参数</p>
+<p>举个例子：</p>
+<pre><code>function a(x, y) {
+    console.log(x, y) // 2 3
+}
+setTimeout(a, 1000, 2, 3)
+</code></pre><h2 id="Set用于数组去重"><a href="#Set用于数组去重" class="headerlink" title="Set用于数组去重"></a>Set用于数组去重</h2><p>Set 结构不会添加重复的值 故可用此方法进行数组去重</p>
+<pre><code>[...new Set(array)]
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/21/CSS学习/" itemprop="url">
                   CSS学习
                 </a>
@@ -743,7 +991,7 @@ let mySearch: SearchFunc;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
